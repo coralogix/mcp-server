@@ -67,6 +67,16 @@ The model will typically load the `dataprime` and `logs` skills, discover fields
 
 More worked examples: [`examples/prompts/`](../examples/prompts/).
 
+## Beyond MCP
+
+MCP is one way to reach Coralogix programmatically. The full platform REST API is described by a public OpenAPI 3.0 specification, useful when you want deterministic scripted access rather than an agent:
+
+```
+https://api.<region>.coralogix.com/mgmt/openapi/latest/openapi.yaml
+```
+
+It is rendered as the [Coralogix API reference](https://coralogix.com/docs/api-reference/). Use MCP when you want a model to explore and reason; use the REST API when you know exactly what you want to call.
+
 ## What to know going in
 
 - **Time ranges default narrow.** Query tools default to a 15-minute window. Ask for an explicit range when you want more.
