@@ -1,0 +1,48 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.coralogix/mcp-server",
+  "title": "Coralogix",
+  "description": "Query and investigate Coralogix observability data — logs, spans, metrics, RUM, alerts, cases, dashboards and service catalog — from any MCP client.",
+  "websiteUrl": "https://coralogix.com/docs/user-guides/mcp-server/setup/",
+  "repository": {
+    "url": "https://github.com/coralogix/mcp-server",
+    "source": "github"
+  },
+  "version": "2.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.{region}.coralogix.com/mgmt/api/v1/mcp",
+      "variables": {
+        "region": {
+          "description": "Your Coralogix region. Find it in the URL of your Coralogix UI, or see docs/regions.md.",
+          "isRequired": true,
+          "choices": ["eu1", "eu2", "us1", "us2", "us3", "ap1", "ap2", "ap3"]
+        }
+      },
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <personal API key>. Omit this header to use OAuth 2.1, which is the recommended flow and requires no manual configuration.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "x-allow-costly-use",
+          "description": "Set to 'true' to expose the Olly AI agent tools, which consume Olly quota. Omitted by default.",
+          "isRequired": false,
+          "isSecret": false,
+          "choices": ["true"]
+        },
+        {
+          "name": "mcp-version",
+          "description": "Pins the tool surface. Defaults to v2. Use v1 only for legacy integrations.",
+          "isRequired": false,
+          "isSecret": false,
+          "default": "v2",
+          "choices": ["v1", "v2"]
+        }
+      ]
+    }
+  ]
+}

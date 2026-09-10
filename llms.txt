@@ -1,0 +1,37 @@
+# Coralogix MCP Server
+
+> Hosted Model Context Protocol server for Coralogix observability data. 57 tools and 18 skills covering logs, spans, metrics, RUM, alerts, cases, dashboards, saved views, infrastructure, service catalog, data usage and AI Center. Remote only — streamable HTTP at https://api.<region>.coralogix.com/mgmt/api/v1/mcp, authenticated with OAuth 2.1 or a Coralogix API key. This repository holds documentation, connection examples and registry metadata; the server implementation is not public.
+
+## Start here
+
+- [README](README.md): What the server is, quick start for Claude Code, Cursor and Codex, and the capability overview.
+- [Getting started](docs/getting-started.md): Connect, authenticate, verify the tool list, and run a first query.
+- [Regions](docs/regions.md): The MCP endpoint URL for each of the eight Coralogix regions. There is no global endpoint.
+
+## Reference
+
+- [Tool catalog](docs/tools.md): All 69 tools — 57 current and 12 deprecated — grouped by domain, with read-only, destructive and open-world annotations.
+- [Skills](docs/skills.md): The 18 skills served as MCP resources, with the verbatim descriptions the model routes on.
+- [Authentication](docs/authentication.md): OAuth 2.1 and API key flows, permission inheritance, and team scoping.
+- [Headers and versioning](docs/headers-and-versioning.md): The mcp-version and x-allow-costly-use headers, the v1/v2 tool surfaces, and Olly opt-in.
+- [Troubleshooting](docs/troubleshooting.md): Empty tool lists, authentication failures, empty query results, and connection problems.
+
+## Machine-readable
+
+- [server.json](server.json): Registry metadata in the official MCP registry schema — remotes, URL variables, declared headers.
+- [resources/tools.json](resources/tools.json): Every tool with its domain, API version, status and MCP annotations.
+- [resources/skills.json](resources/skills.json): Every skill with its URI, description and bundled references.
+- [resources/regions.json](resources/regions.json): Region identifiers mapped to MCP endpoint URLs.
+
+## Examples
+
+- [Client configurations](examples/clients/): Copy-pasteable setup for Claude Code, Cursor, VS Code, Claude Desktop, Codex, Windsurf, Zed and generic HTTP clients.
+- [curl scripts](examples/curl/): Raw JSON-RPC over streamable HTTP — initialize, list tools, call a tool.
+- [Prompt examples](examples/prompts/): Worked investigation prompts for incident triage, latency analysis, log exploration and RUM.
+
+## Optional
+
+- [Registry publishing](docs/registry-publishing.md): How server.json is verified and published, and what to update when the server changes.
+- [Contributing](CONTRIBUTING.md): What belongs in this repository and how to propose changes.
+- [Changelog](CHANGELOG.md): Documentation and metadata changes.
+- [Coralogix product documentation](https://coralogix.com/docs/user-guides/mcp-server/setup/): The canonical user-facing setup page.

@@ -1,0 +1,982 @@
+{
+  "$comment": "Generated from the MCP server source. Do not hand-edit; regenerate with scripts/generate-tool-manifest.",
+  "server": "com.coralogix/mcp-server",
+  "serverVersion": "2.0.0",
+  "protocol": {
+    "transport": "streamable-http",
+    "endpointPathSuffix": "/mgmt/api/v1/mcp"
+  },
+  "toolCount": {
+    "total": 69,
+    "current": 57,
+    "deprecated": 12
+  },
+  "tools": [
+    {
+      "name": "ai_center_get_model_pricing",
+      "title": null,
+      "domain": "AI Center",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": null,
+        "destructiveHint": null,
+        "openWorldHint": null,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "ai_center_list_applications",
+      "title": null,
+      "domain": "AI Center",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": null,
+        "destructiveHint": null,
+        "openWorldHint": null,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "ai_center_list_evaluations",
+      "title": null,
+      "domain": "AI Center",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": null,
+        "destructiveHint": null,
+        "openWorldHint": null,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_ai_custom_evaluation",
+      "title": null,
+      "domain": "AI Center",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": null,
+        "destructiveHint": null,
+        "openWorldHint": null,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_ai_evaluation",
+      "title": null,
+      "domain": "AI Center",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": null,
+        "destructiveHint": null,
+        "openWorldHint": null,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_ai_model_pricing",
+      "title": null,
+      "domain": "AI Center",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": null,
+        "destructiveHint": null,
+        "openWorldHint": null,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_alerts_object",
+      "title": "Get alerts object",
+      "domain": "Alerts & Cases",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_case_events",
+      "title": "Get case events",
+      "domain": "Alerts & Cases",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_cases",
+      "title": "Manage and inspect cases",
+      "domain": "Alerts & Cases",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_alert_definitions",
+      "title": "Search alert definitions",
+      "domain": "Alerts & Cases",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_dashboard_folders",
+      "title": "List dashboard folders",
+      "domain": "Dashboards",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_dashboards",
+      "title": "List dashboards",
+      "domain": "Dashboards",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_dashboard_folders",
+      "title": "Create or delete dashboard folders",
+      "domain": "Dashboards",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_dashboards",
+      "title": "Create, replace, validate, or delete dashboards",
+      "domain": "Dashboards",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_dashboard",
+      "title": "Search dashboards or fetch one by ID",
+      "domain": "Dashboards",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_queries",
+      "title": "Search saved dashboard queries",
+      "domain": "Dashboards",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_data_usage_capabilities",
+      "title": "Get Data Usage Query API capabilities",
+      "domain": "Data Usage",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "query_data_usage",
+      "title": "Query billable data usage",
+      "domain": "Data Usage",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "describe_dataprime_construct",
+      "title": "Describe a DataPrime construct",
+      "domain": "DataPrime Language",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_dataprime_commands",
+      "title": "Browse DataPrime commands and functions",
+      "domain": "DataPrime Language",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_dataprime_constructs",
+      "title": "List DataPrime constructs",
+      "domain": "DataPrime Language",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "show_dataprime_command_details",
+      "title": "Show DataPrime command syntax and details",
+      "domain": "DataPrime Language",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "fetch_doc",
+      "title": "Fetch a Coralogix doc page",
+      "domain": "Documentation",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_docs",
+      "title": "Search Coralogix docs",
+      "domain": "Documentation",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_for_fields",
+      "title": "Search log/span fields by description and/or example value",
+      "domain": "Field Discovery",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_infrastructure_resource_health_history",
+      "title": "Get Infrastructure Resource Health History",
+      "domain": "Infrastructure",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_infrastructure_resource_raw_data",
+      "title": "Get Infrastructure Resource Raw Data",
+      "domain": "Infrastructure",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_infrastructure_resource_types",
+      "title": "List Infrastructure Resource Types",
+      "domain": "Infrastructure",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_infrastructure_resources",
+      "title": "List Infrastructure Resources",
+      "domain": "Infrastructure",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_system_dataset_info",
+      "title": "Get system dataset info",
+      "domain": "Logs, Spans & Datasets",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_datasets",
+      "title": "List datasets",
+      "domain": "Logs, Spans & Datasets",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "query_dataprime",
+      "title": "Query DataPrime (logs, spans, or datasets)",
+      "domain": "Logs, Spans & Datasets",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_metric_label_values",
+      "title": "List metric label values",
+      "domain": "Metrics",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_metric_labels",
+      "title": "List metric label names",
+      "domain": "Metrics",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "query_promql_instant",
+      "title": "Run PromQL instant query (metrics)",
+      "domain": "Metrics",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "query_promql_range",
+      "title": "Run PromQL range query (metrics)",
+      "domain": "Metrics",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_labels",
+      "title": "Search label names across metrics",
+      "domain": "Metrics",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_relevant_metrics",
+      "title": "Search relevant metrics",
+      "domain": "Metrics",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "olly_ask",
+      "title": "Ask Olly AI Assistant",
+      "domain": "Olly Agent",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": true,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use: true"
+    },
+    {
+      "name": "olly_get_artifact",
+      "title": "Get Olly Artifact",
+      "domain": "Olly Agent",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use: true"
+    },
+    {
+      "name": "olly_get_chat",
+      "title": "Get Olly Chat",
+      "domain": "Olly Agent",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use: true"
+    },
+    {
+      "name": "olly_get_interaction",
+      "title": "Get Olly Interaction",
+      "domain": "Olly Agent",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use: true"
+    },
+    {
+      "name": "olly_list_artifacts",
+      "title": "List Olly Artifacts",
+      "domain": "Olly Agent",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use: true"
+    },
+    {
+      "name": "olly_list_chats",
+      "title": "List Olly Chats",
+      "domain": "Olly Agent",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use: true"
+    },
+    {
+      "name": "read_rum_sdk_docs",
+      "title": "Read Coralogix RUM SDK documentation",
+      "domain": "RUM",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_view",
+      "title": "Get saved view",
+      "domain": "Saved Views",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_view_folder",
+      "title": "Get saved view folder",
+      "domain": "Saved Views",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_view_folders",
+      "title": "List saved view folders",
+      "domain": "Saved Views",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_views",
+      "title": "List saved views",
+      "domain": "Saved Views",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_view_folders",
+      "title": "Create, update, or delete saved view folders",
+      "domain": "Saved Views",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_views",
+      "title": "Create, update, or delete saved views",
+      "domain": "Saved Views",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_service_catalog_entities_data",
+      "title": "Get Service Catalog Entities Data",
+      "domain": "Service Catalog",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_service_catalog_entity_type_schema",
+      "title": "Get Service Catalog Entity Type Schema",
+      "domain": "Service Catalog",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_service_catalog_entities",
+      "title": "List Service Catalog Entities",
+      "domain": "Service Catalog",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_service_catalog_entity_types",
+      "title": "List Service Catalog Entity Types",
+      "domain": "Service Catalog",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_service_map_relations_graph",
+      "title": "Get service dependency graph",
+      "domain": "Service Map",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_datetime",
+      "title": "Get current UTC date and time",
+      "domain": "Utilities",
+      "apiVersion": "v2",
+      "status": "current",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_logs_v1",
+      "title": "Query logs with DataPrime",
+      "domain": "Logs, Spans & Datasets",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_traces_v1",
+      "title": "Query traces with DataPrime",
+      "domain": "Logs, Spans & Datasets",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "read_dataprime_intro_docs_v1",
+      "title": "Read DataPrime query introduction docs",
+      "domain": "Logs, Spans & Datasets",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "metrics__list_v1",
+      "title": "List available metric names",
+      "domain": "Metrics",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "metrics__metric_label_values_v1",
+      "title": "List metric label values",
+      "domain": "Metrics",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "metrics__metric_labels_v1",
+      "title": "List metric label names",
+      "domain": "Metrics",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "metrics__range_query_v1",
+      "title": "Run PromQL range query (metrics)",
+      "domain": "Metrics",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "read_metrics_guidelines_v1",
+      "title": "Read metrics querying best practices",
+      "domain": "Metrics",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_metrics",
+      "title": "Search metrics by description or name pattern",
+      "domain": "Metrics",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "read_rum_log_intro_docs_v1",
+      "title": "Read RUM log fields and query guide",
+      "domain": "RUM",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "read_rum_sdk_docs_v1",
+      "title": "Read Coralogix RUM SDK documentation",
+      "domain": "RUM",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_schemas_v1",
+      "title": "List dataset schemas and fields",
+      "domain": "Schemas",
+      "apiVersion": "v1",
+      "status": "deprecated",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    }
+  ]
+}

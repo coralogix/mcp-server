@@ -1,0 +1,8 @@
+{
+  "_comment": "Windsurf MCP configuration. Save as ~/.codeium/windsurf/mcp_config.json. Replace eu2 with your region.",
+  "mcpServers": {
+    "coralogix": {
+      "serverUrl": "https://api.eu2.coralogix.com/mgmt/api/v1/mcp"
+    }
+  }
+}
