@@ -2,114 +2,127 @@
   {
     "dir": "ai-center",
     "name": "ai-center",
-    "description": "Coralogix AI Center \u2014 observe, evaluate, and guard GenAI/LLM applications and agents. Use for ANY question or action about the user's AI/GenAI applications or agents \u2014 their behavior, prompts/responses, quality, hallucinations, guardrails, security, cost/tokens, errors, latency, evaluations/policies, model pricing, inventory/security posture, or configuration, including comparing or tracking agents over time. Combines GenAI span queries (via `query_dataprime`) with the `ai_center_*` / `manage_ai_*` configuration tools.",
+    "description": "Coralogix AI Center — observe, evaluate, and guard GenAI/LLM applications and agents. Use for ANY question or action about the user's AI/GenAI applications or agents — their behavior, prompts/responses, quality, hallucinations, guardrails, security, cost/tokens, errors, latency, evaluations/policies, model pricing, inventory/security posture, or configuration, including comparing or tracking agents over time. Combines GenAI span queries (via `query_dataprime`) with the `ai_center_*` / `manage_ai_*` configuration tools.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "alerts",
     "name": "alerts",
     "description": "Alert and case terminology, alert definitions, alert events, cases, IDs, alert types, and skill routing. Load whenever working with alerts or cases to understand shared terminology.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "case-analytics",
     "name": "case-analytics",
-    "description": "Fleet/aggregate analytics across many cases via the `system/labs.cases.state_updates` DataPrime dataset. Load when the user asks counts, trends, distributions or rates across cases \u2014 e.g. \"MTTR last week\", \"how many P1 cases today\", \"active case count per team\", \"list active cases\", \"how long until activation on average\". Do NOT load for one specific case ID \u2014 use alert tools for single-case investigation. Load the `dataprime` skill alongside this skill.",
+    "description": "Fleet/aggregate analytics across many cases via the `system/labs.cases.state_updates` DataPrime dataset. Load when the user asks counts, trends, distributions or rates across cases — e.g. \"MTTR last week\", \"how many P1 cases today\", \"active case count per team\", \"list active cases\", \"how long until activation on average\". Do NOT load for one specific case ID — use alert tools for single-case investigation. Load the `dataprime` skill alongside this skill.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "cases",
     "name": "cases",
     "description": "Triage and manage Coralogix Cases. Load when a user wants to inspect a case, update it, add a comment, assign or acknowledge it, resolve or close it, change its priority, inspect its events, or inspect notification deliveries.",
-    "references": [
-      "case-analytics.md",
-      "single-case.md"
-    ]
+    "requiresHeader": null,
+    "references": []
   },
   {
     "dir": "coralogix-docs",
     "name": "coralogix-docs",
-    "description": "Search and read official Coralogix platform documentation using **`search_docs`** and **`fetch_doc`**. Use when the user asks how Coralogix features work, how to configure or use the UI, set up integrations (OpenTelemetry, agents, collectors, webhooks), manage API keys, explore spans/traces/logs in the product, configure alerts/SLOs/dashboards, or needs authoritative product docs \u2014 not live tenant telemetry.",
+    "description": "| Search and read official Coralogix platform documentation using **`search_docs`** and **`fetch_doc`**. Use when the user asks how Coralogix features work, how to configure or use the UI, set up integrations (OpenTelemetry, agents, collectors, webhooks), manage API keys, explore spans/traces/logs in the product, configure alerts/SLOs/dashboards, or needs authoritative product docs — not live tenant telemetry.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "coralogix-logs",
-    "name": "logs",
+    "name": "coralogix-logs",
     "description": "Log-specific concepts, fields, field discovery usage, and troubleshooting patterns. The `dataprime` skill should be loaded alongside this skill. Load when you need to explore logs in your investigation or to answer a question about logs.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "coralogix-rum",
     "name": "coralogix-rum",
     "description": "Use when the user asks to \"query RUM\", \"cx_rum\", \"real user monitoring\", \"frontend errors\", \"browser errors\", \"mobile app crashes\", \"Web Vitals\", \"slow page load\", \"LCP\", \"CLS\", \"browser network failures\", \"user clicks\", \"session replay\", \"RUM SDK\", \"install RUM\", \"source maps for RUM\", or wants to query Coralogix RUM telemetry using query_dataprime with `source rum.events`, DataPrime, and flat `$d.*` fields (field catalog is in Key Fields below), or needs official RUM SDK docs (read_rum_sdk_docs).",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "coralogix-spans",
-    "name": "spans",
-    "description": "Span-specific concepts, fields, duration handling, and investigation patterns. The `dataprime` skill should be loaded alongside this skill. Load when you need to explore spans in your investigation or to answer a question about spans. For service-level error rate, latency percentiles, throughput, or health, load the `service-catalog` skill instead \u2014 it is the pre-aggregated path for those; use this skill when you need individual traces, span attributes, or span-level detail the catalog does not expose.",
+    "name": "coralogix-spans",
+    "description": "Span-specific concepts, fields, duration handling, and investigation patterns. Load when you need to explore spans in your investigation or to answer a question about spans. For service-level error rate, latency percentiles, throughput, or health, load the `service-catalog` skill instead — it is the pre-aggregated path for those; use this skill when you need individual traces, span attributes, or span-level detail the catalog does not expose. Always load the `dataprime` skill together with this one before writing any query.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "dashboards",
     "name": "dashboards",
-    "description": "Dashboard analysis workflow and rules for using dashboard JSON, filters, variables, and time ranges. Load when the user provides dashboard context (for example a dashboard link or structured dashboard data).",
+    "description": "Dashboard analysis and editing workflow and rules for using dashboard JSON, filters, variables, and time ranges. Load when the user provides dashboard context (for example a dashboard link) or asks to create or change a dashboard.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "data-usage",
     "name": "data-usage",
     "description": "Data usage, billing units, plan consumption, quota metrics, anomaly detection, and time-series analysis concepts and query workflow. Load when the user asks about data usage, ingestion volumes, billing, plan limits, overage, quota attribution, usage anomalies, or usage trends over time.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "dataprime",
     "name": "dataprime",
     "description": "DataPrime query language for logs/spans/custom datasets (shared syntax, patterns, and rules). Load when you need to write a DataPrime query to explore logs or spans. Also load in case the user asks for help with a DataPrime query or its generation.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "datasets",
     "name": "datasets",
     "description": "Dataset discovery and source-selection guidance for DataPrime system and user-defined datasets. Load when the user asks what datasets exist, how to use `list_datasets`, how to query `system/...` or `default/...` sources, or how to inspect a specific system dataset after discovery. The `dataprime` skill should be loaded alongside this skill.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "infrastructure",
     "name": "infrastructure",
-    "description": "Discover and inspect infrastructure resources \u2014 monitored resource types, resource inventory, per-resource health history and raw data. Load when the user asks to \"show resource types\", \"list infrastructure resources\", \"what resources of this kind are monitored\", \"is this resource healthy\", \"resource health history\", \"when did this resource go critical\", \"get raw resource data\", \"infrastructure inventory\", \"find resources by name\", \"filter resources by service or environment\", or wants to explore infrastructure resources and their data.",
+    "description": "Discover and inspect infrastructure resources — monitored resource types, resource inventory, per-resource health history and raw data. Load when the user asks to \"show resource types\", \"list infrastructure resources\", \"what resources of this kind are monitored\", \"is this resource healthy\", \"resource health history\", \"when did this resource go critical\", \"get raw resource data\", \"infrastructure inventory\", \"find resources by name\", \"filter resources by service or environment\", or wants to explore infrastructure resources and their data.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "metrics-query",
-    "name": "metrics",
-    "description": "PromQL fundamentals and metric discovery/query workflow. Load when you need to explore metrics in your investigation or to answer a question about metrics. For service-level RED metrics (error rate, latency percentiles, throughput) or pod/JVM resource saturation, load the `service-catalog` skill instead \u2014 it is a pre-aggregated path for that data; this skill is for custom, infrastructure, and hand-written PromQL work.",
-    "references": [
-      "promql-guidelines.md"
-    ]
+    "name": "metrics-query",
+    "description": "PromQL fundamentals and metric discovery/query workflow. Load when you need to explore metrics in your investigation or to answer a question about metrics. For service-level RED metrics (error rate, latency percentiles, throughput) or pod/JVM resource saturation, load the `service-catalog` skill instead — it is a pre-aggregated path for that data; this skill is for custom, infrastructure, and hand-written PromQL work.",
+    "requiresHeader": null,
+    "references": []
   },
   {
     "dir": "olly",
     "name": "olly",
-    "description": "Use when the user wants to investigate or analyze data in Coralogix, or explicitly asks to use Olly. Examples: \"ask Olly\", \"why is my service slow\", \"what alerts fired\", \"investigate this incident\", \"analyze errors\", \"explain this spike\".",
+    "description": ">- Use when the user wants to investigate or analyze data in Coralogix, or explicitly asks to use Olly. Examples: \"ask Olly\", \"why is my service slow\", \"what alerts fired\", \"investigate this incident\", \"analyze errors\", \"explain this spike\".",
+    "requiresHeader": "x-allow-costly-use",
     "references": []
   },
   {
     "dir": "service-catalog",
     "name": "service-catalog",
-    "description": "The fast, authoritative path for APM/RED data \u2014 error rate, latency percentiles (p50-p99), throughput, health status, resource saturation (CPU/memory/OOMKilled for k8s-pod, heap/thread/GC for jvm), and dependency latency \u2014 across services, databases, operations, k8s pods, and JVMs. Load this FIRST for any question about service errors, slowness, latency, health, or saturation, including broad ones like \"is any service erroring or slow right now?\", before reaching for raw spans or PromQL. Also covers inventory questions such as listing services or available entity types.",
+    "description": "The fast, authoritative path for APM/RED data — error rate, latency percentiles (p50-p99), throughput, health status, resource saturation (CPU/memory/OOMKilled for k8s-pod, heap/thread/GC for jvm), and dependency latency — across services, databases, operations, k8s pods, and JVMs. Load this FIRST for any question about service errors, slowness, latency, health, or saturation, including broad ones like \"is any service erroring or slow right now?\", before reaching for raw spans or PromQL. Also covers inventory questions such as listing services or available entity types.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "single-case",
     "name": "single-case",
-    "description": "Deep single-case investigation. Load when the user asks about one specific case by ID (UUID or readable id like \"CASE-123\") \u2014 e.g. summarize comments, explain who was notified where, judge whether the trigger reflects a real incident, walk the lifecycle. The `alerts` skill should be loaded alongside this skill.",
+    "description": "Deep single-case investigation. Load when the user asks about one specific case by ID (UUID or readable id like \"CASE-123\") — e.g. summarize comments, explain who was notified where, judge whether the trigger reflects a real incident, walk the lifecycle. The `alerts` skill should be loaded alongside this skill.",
+    "requiresHeader": null,
     "references": []
   },
   {
     "dir": "views",
     "name": "views",
     "description": "Manage Coralogix saved views and saved-view folders. Load when the user asks to create, update, delete, inspect, organize, or list saved log views.",
+    "requiresHeader": null,
     "references": []
   }
 ]

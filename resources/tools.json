@@ -1,5 +1,5 @@
 {
-  "$comment": "Generated from the MCP server source. Do not hand-edit; regenerate with scripts/generate-tool-manifest.",
+  "$comment": "Generated from the live Coralogix MCP server. Do not hand-edit; regenerate with scripts/generate-mcp-public-repo.py in coralogix/documentation.",
   "server": "com.coralogix/mcp-server",
   "serverVersion": "2.0.0",
   "protocol": {
@@ -7,255 +7,45 @@
     "endpointPathSuffix": "/mgmt/api/v1/mcp"
   },
   "toolCount": {
-    "total": 69,
-    "current": 57,
-    "deprecated": 12
+    "total": 72,
+    "gated": 6,
+    "deprecated": 0
   },
   "tools": [
     {
       "name": "ai_center_get_model_pricing",
-      "title": null,
+      "title": "Read AI Center configuration",
       "domain": "AI Center",
-      "apiVersion": "v2",
       "status": "current",
+      "description": "Get the team's custom model pricing — JSON `{pricing: {id, companyId, prices}}`, where `prices` maps each model name to its configured input/output/cache per-token prices (empty when no overrides are set).",
       "annotations": {
-        "readOnlyHint": null,
-        "destructiveHint": null,
-        "openWorldHint": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
         "idempotentHint": null
       },
       "requiresHeader": null
     },
     {
       "name": "ai_center_list_applications",
-      "title": null,
+      "title": "Read AI Center configuration",
       "domain": "AI Center",
-      "apiVersion": "v2",
       "status": "current",
+      "description": "List the team's AI Center (AI v3) applications, each with its `guardrailsIntegrated` (guarded) status. Pass `application_ids` to fetch specific apps by UUID. Configuration data, not in span telemetry. Returns JSON.",
       "annotations": {
-        "readOnlyHint": null,
-        "destructiveHint": null,
-        "openWorldHint": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
         "idempotentHint": null
       },
       "requiresHeader": null
     },
     {
       "name": "ai_center_list_evaluations",
-      "title": null,
+      "title": "Read AI Center configuration",
       "domain": "AI Center",
-      "apiVersion": "v2",
       "status": "current",
-      "annotations": {
-        "readOnlyHint": null,
-        "destructiveHint": null,
-        "openWorldHint": null,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "manage_ai_custom_evaluation",
-      "title": null,
-      "domain": "AI Center",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": null,
-        "destructiveHint": null,
-        "openWorldHint": null,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "manage_ai_evaluation",
-      "title": null,
-      "domain": "AI Center",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": null,
-        "destructiveHint": null,
-        "openWorldHint": null,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "manage_ai_model_pricing",
-      "title": null,
-      "domain": "AI Center",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": null,
-        "destructiveHint": null,
-        "openWorldHint": null,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_alerts_object",
-      "title": "Get alerts object",
-      "domain": "Alerts & Cases",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_case_events",
-      "title": "Get case events",
-      "domain": "Alerts & Cases",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "manage_cases",
-      "title": "Manage and inspect cases",
-      "domain": "Alerts & Cases",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": false,
-        "destructiveHint": true,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "search_alert_definitions",
-      "title": "Search alert definitions",
-      "domain": "Alerts & Cases",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_dashboard_folders",
-      "title": "List dashboard folders",
-      "domain": "Dashboards",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_dashboards",
-      "title": "List dashboards",
-      "domain": "Dashboards",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "manage_dashboard_folders",
-      "title": "Create or delete dashboard folders",
-      "domain": "Dashboards",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": false,
-        "destructiveHint": true,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "manage_dashboards",
-      "title": "Create, replace, validate, or delete dashboards",
-      "domain": "Dashboards",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": false,
-        "destructiveHint": true,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "search_dashboard",
-      "title": "Search dashboards or fetch one by ID",
-      "domain": "Dashboards",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "search_queries",
-      "title": "Search saved dashboard queries",
-      "domain": "Dashboards",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_data_usage_capabilities",
-      "title": "Get Data Usage Query API capabilities",
-      "domain": "Data Usage",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "query_data_usage",
-      "title": "Query billable data usage",
-      "domain": "Data Usage",
-      "apiVersion": "v2",
-      "status": "current",
+      "description": "List the configured evaluations on AI apps, returning BOTH prebuilt and custom evaluations as `{prebuilt_evaluations, custom_evaluations}`. No filter → all prebuilt configs + the whole custom library; with `application` + `subsystem` (a pair — pass both or neither) → only that app's prebuilt + custom. Pass `evaluation_id` for a single **prebuilt** evaluation by UUID (prebuilt-only — a custom policy has no by-id fetch; list, then match by `id` in `custom_evaluations`).\nReturns `{prebuilt_evaluations, custom_evaluations}` — arrays of objects: prebuilt carry `application`/`subsystem`/`config`/`isEnabled`; custom carry `name`/`config`/`applicationIds` (the linked app UUIDs).",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -268,50 +58,8 @@
       "name": "describe_dataprime_construct",
       "title": "Describe a DataPrime construct",
       "domain": "DataPrime Language",
-      "apiVersion": "v2",
       "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_dataprime_commands",
-      "title": "Browse DataPrime commands and functions",
-      "domain": "DataPrime Language",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_dataprime_constructs",
-      "title": "List DataPrime constructs",
-      "domain": "DataPrime Language",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "show_dataprime_command_details",
-      "title": "Show DataPrime command syntax and details",
-      "domain": "DataPrime Language",
-      "apiVersion": "v2",
-      "status": "current",
+      "description": "Describe a DataPrime command or function construct.\n\nArgs:\n    request: Discriminated request with ``type`` (``command`` or ``function``) and ``id``.\n\nReturns:\n    Full documentation content for the requested construct.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -324,8 +72,8 @@
       "name": "fetch_doc",
       "title": "Fetch a Coralogix doc page",
       "domain": "Documentation",
-      "apiVersion": "v2",
       "status": "current",
+      "description": "Fetch one Coralogix docs page as markdown.\n\nArgs:\n    suffix: Path suffix from search_docs (e.g. user-guides/data_exploration/logs/quickstart).\n\nReturns:\n    Plain text with the path suffix and markdown body.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -335,25 +83,11 @@
       "requiresHeader": null
     },
     {
-      "name": "search_docs",
-      "title": "Search Coralogix docs",
-      "domain": "Documentation",
-      "apiVersion": "v2",
+      "name": "get_alerts_object",
+      "title": "Get alerts object",
+      "domain": "Alerts & Cases",
       "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": true,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "search_for_fields",
-      "title": "Search log/span fields by description and/or example value",
-      "domain": "Field Discovery",
-      "apiVersion": "v2",
-      "status": "current",
+      "description": "Retrieve a specific alert definition, alert event, or case by ID.\n\nUse this tool when the user has an alert-related ID but the object type is unclear. The tool can try multiple alert object types automatically, or you can provide a hint.\n\nFor a case with 30 or fewer events, the case's full event history is returned (`case_events`, newest-first, including full per-event detail like comment text, actor, and timestamps). For a case with more than 30 events, only a de-duplicated summary of event *types* is returned instead (`case_event_types`, a list of `{event_type, count}`), to bound response size. Use the `get_case_events` tool to fetch full event detail for cases above that threshold, optionally filtered by type and paged - that tool also returns events newest-first.\n\nArgs:\n    object_id: Alert object ID. Must be a UUID, or a readable case ID like ``CASE-123``.\n    object_type_hint: Optional hint for the expected object type: ``alert_definition_by_id``, ``alert_definition_by_version_id``, ``alert_event``, or ``case``.\n    get_watch_data: If true, also fetch watch data (query plus triggering records) for the most relevant alert event tied to the object.\n\nReturns:\n    JSON string with ``search_id``, ``found_type``, ``found_object``, and optional ``warning`` / ``watch_data``.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -363,11 +97,11 @@
       "requiresHeader": null
     },
     {
-      "name": "get_infrastructure_resource_health_history",
-      "title": "Get Infrastructure Resource Health History",
-      "domain": "Infrastructure",
-      "apiVersion": "v2",
+      "name": "get_case_events",
+      "title": "Get case events",
+      "domain": "Alerts & Cases",
       "status": "current",
+      "description": "Retrieve full case event detail (comment text, actor, timestamps, and other event-specific data) for a case, with optional filtering by event type and paging.\n\nEvents are returned newest-first, so with the default offset the most recent activity is on the first page; page further with `offset` to reach older events.\n\nUse when you need to view history of case activity (e.g. when a user was assigned).\n\nReturns:\n    JSON string with paging metadata (``total_case_events``, ``filtered_by_event_type_total_count``, ``offset``, ``page_size``, ``has_more``) and the ``events`` list.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -377,417 +111,11 @@
       "requiresHeader": null
     },
     {
-      "name": "get_infrastructure_resource_raw_data",
-      "title": "Get Infrastructure Resource Raw Data",
-      "domain": "Infrastructure",
-      "apiVersion": "v2",
+      "name": "get_data_usage_capabilities",
+      "title": "Get Data Usage Query API capabilities",
+      "domain": "Data Usage",
       "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_infrastructure_resource_types",
-      "title": "List Infrastructure Resource Types",
-      "domain": "Infrastructure",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_infrastructure_resources",
-      "title": "List Infrastructure Resources",
-      "domain": "Infrastructure",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_system_dataset_info",
-      "title": "Get system dataset info",
-      "domain": "Logs, Spans & Datasets",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_datasets",
-      "title": "List datasets",
-      "domain": "Logs, Spans & Datasets",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "query_dataprime",
-      "title": "Query DataPrime (logs, spans, or datasets)",
-      "domain": "Logs, Spans & Datasets",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_metric_label_values",
-      "title": "List metric label values",
-      "domain": "Metrics",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_metric_labels",
-      "title": "List metric label names",
-      "domain": "Metrics",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "query_promql_instant",
-      "title": "Run PromQL instant query (metrics)",
-      "domain": "Metrics",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "query_promql_range",
-      "title": "Run PromQL range query (metrics)",
-      "domain": "Metrics",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "search_labels",
-      "title": "Search label names across metrics",
-      "domain": "Metrics",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "search_relevant_metrics",
-      "title": "Search relevant metrics",
-      "domain": "Metrics",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "olly_ask",
-      "title": "Ask Olly AI Assistant",
-      "domain": "Olly Agent",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": false,
-        "destructiveHint": false,
-        "openWorldHint": true,
-        "idempotentHint": null
-      },
-      "requiresHeader": "x-allow-costly-use: true"
-    },
-    {
-      "name": "olly_get_artifact",
-      "title": "Get Olly Artifact",
-      "domain": "Olly Agent",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": "x-allow-costly-use: true"
-    },
-    {
-      "name": "olly_get_chat",
-      "title": "Get Olly Chat",
-      "domain": "Olly Agent",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": "x-allow-costly-use: true"
-    },
-    {
-      "name": "olly_get_interaction",
-      "title": "Get Olly Interaction",
-      "domain": "Olly Agent",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": "x-allow-costly-use: true"
-    },
-    {
-      "name": "olly_list_artifacts",
-      "title": "List Olly Artifacts",
-      "domain": "Olly Agent",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": "x-allow-costly-use: true"
-    },
-    {
-      "name": "olly_list_chats",
-      "title": "List Olly Chats",
-      "domain": "Olly Agent",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": "x-allow-costly-use: true"
-    },
-    {
-      "name": "read_rum_sdk_docs",
-      "title": "Read Coralogix RUM SDK documentation",
-      "domain": "RUM",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_view",
-      "title": "Get saved view",
-      "domain": "Saved Views",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_view_folder",
-      "title": "Get saved view folder",
-      "domain": "Saved Views",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_view_folders",
-      "title": "List saved view folders",
-      "domain": "Saved Views",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_views",
-      "title": "List saved views",
-      "domain": "Saved Views",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "manage_view_folders",
-      "title": "Create, update, or delete saved view folders",
-      "domain": "Saved Views",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": false,
-        "destructiveHint": true,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "manage_views",
-      "title": "Create, update, or delete saved views",
-      "domain": "Saved Views",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": false,
-        "destructiveHint": true,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_service_catalog_entities_data",
-      "title": "Get Service Catalog Entities Data",
-      "domain": "Service Catalog",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_service_catalog_entity_type_schema",
-      "title": "Get Service Catalog Entity Type Schema",
-      "domain": "Service Catalog",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_service_catalog_entities",
-      "title": "List Service Catalog Entities",
-      "domain": "Service Catalog",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_service_catalog_entity_types",
-      "title": "List Service Catalog Entity Types",
-      "domain": "Service Catalog",
-      "apiVersion": "v2",
-      "status": "current",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_service_map_relations_graph",
-      "title": "Get service dependency graph",
-      "domain": "Service Map",
-      "apiVersion": "v2",
-      "status": "current",
+      "description": "Get the supported labels, measurement kinds, units, and request limits for the Data Usage Query API.\n\nCall this before ``query_data_usage`` and retain its complete response for the rest of the session. Use the returned capabilities to construct valid grouping and filter parameters; do not guess dimensions.\n\nReturns:\n    JSON string containing the current API capabilities.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -800,8 +128,8 @@
       "name": "get_datetime",
       "title": "Get current UTC date and time",
       "domain": "Utilities",
-      "apiVersion": "v2",
       "status": "current",
+      "description": "Get the current date and time in UTC (ISO 8601), useful for query time bounds.\n\nReturns:\n    ISO 8601 timestamp string in UTC (for example ``2024-01-15T12:00:00.000000+00:00``).",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -811,11 +139,11 @@
       "requiresHeader": null
     },
     {
-      "name": "get_logs_v1",
-      "title": "Query logs with DataPrime",
-      "domain": "Logs, Spans & Datasets",
-      "apiVersion": "v1",
-      "status": "deprecated",
+      "name": "get_infrastructure_resource_health_history",
+      "title": "Get Infrastructure Resource Health History",
+      "domain": "Infrastructure",
+      "status": "current",
+      "description": "Get daily health samples for one infrastructure resource, oldest first.\n\nThe time window is fixed server-side (a trailing window of ~14 days, one sample per day at midnight UTC); it is not caller-controllable.\n\nArgs:\n    resource_id: The resource ID exactly as returned by ``list_infrastructure_resources`` (it embeds ``:``, ``|`` and ``=``; pass it verbatim, encoding is handled internally).\n\nReturns:\n    JSON array of ``{timestamp, status}`` where ``status`` is one of ``Healthy``, ``Critical``, ``Unmonitored``.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -825,11 +153,11 @@
       "requiresHeader": null
     },
     {
-      "name": "get_traces_v1",
-      "title": "Query traces with DataPrime",
-      "domain": "Logs, Spans & Datasets",
-      "apiVersion": "v1",
-      "status": "deprecated",
+      "name": "get_infrastructure_resource_raw_data",
+      "title": "Get Infrastructure Resource Raw Data",
+      "domain": "Infrastructure",
+      "status": "current",
+      "description": "Get the raw, source-specific document for one infrastructure resource as JSON.\n\nUse this instead of the health-history tool when you need source-specific detail (tags, instance metadata, configuration) rather than health.\n\nArgs:\n    resource_id: The resource ID exactly as returned by ``list_infrastructure_resources`` (pass it verbatim, encoding is handled internally).\n\nReturns:\n    JSON with ``raw_data``: a free-form object keyed by data source name (e.g. ``OTEL``). ``raw_data`` may be ``null`` with an explanatory ``note`` when no document exists — that is a cleanly absent document, not an error.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -839,39 +167,11 @@
       "requiresHeader": null
     },
     {
-      "name": "read_dataprime_intro_docs_v1",
-      "title": "Read DataPrime query introduction docs",
-      "domain": "Logs, Spans & Datasets",
-      "apiVersion": "v1",
-      "status": "deprecated",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "metrics__list_v1",
-      "title": "List available metric names",
-      "domain": "Metrics",
-      "apiVersion": "v1",
-      "status": "deprecated",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "metrics__metric_label_values_v1",
+      "name": "get_metric_label_values",
       "title": "List metric label values",
       "domain": "Metrics",
-      "apiVersion": "v1",
-      "status": "deprecated",
+      "status": "current",
+      "description": "List values for a metric label.\n\nArgs:\n    metric_name: The name of the metric to get label values for.\n    label: The name of the label to get values for.\n\nReturns:\n    Newline-separated list of available values for the specified metric label.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -881,11 +181,11 @@
       "requiresHeader": null
     },
     {
-      "name": "metrics__metric_labels_v1",
+      "name": "get_metric_labels",
       "title": "List metric label names",
       "domain": "Metrics",
-      "apiVersion": "v1",
-      "status": "deprecated",
+      "status": "current",
+      "description": "List label names for a metric.\n\nUse this to discover which labels exist for a metric before querying\nspecific label values with get_metric_label_values.\n\nArgs:\n    metric_name: The name of the metric to get label names for.\n\nReturns:\n    Newline-separated list of available label names for the specified metric.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -895,11 +195,697 @@
       "requiresHeader": null
     },
     {
-      "name": "metrics__range_query_v1",
+      "name": "get_service_catalog_entities_data",
+      "title": "Get Service Catalog Entities Data",
+      "domain": "Service Catalog",
+      "status": "current",
+      "description": "Get column data — RED metrics (latency percentiles, throughput, error rate), health (policy evaluation status), resource saturation (CPU/memory/OOMKilled for k8s-pod; heap/thread/GC for jvm), and dependencies (``dependencyLatencyPerRequest``, ``timeConsumingDependencies``) — for one time window, optionally grouped and filtered. Omit ``entity_id`` to query across every entity of the type, or set it to drill down into exactly one named entity; both return the same response shape.\n\nArgs:\n    entity_type: An entity type from ``list_service_catalog_entity_types`` (either form, e.g. \"service\" or \"ENTITY_TYPE_SERVICE\").\n    start: Window start, unix seconds.\n    end: Window end, unix seconds (must be > start).\n    columns: Column ids to fetch, from the entity type's schema (e.g. [\"errorRate\", \"totalRequests\", \"health\"]).\n    entity_id: Optional. Scopes the query to exactly one named entity (e.g. one service), exactly as returned by ``list_service_catalog_entities``. When set, ``limit``/``sort_column``/``sort_order`` are not supported — a single entity has at most one row/series per group.\n    group_by: Optional. Labels to group rows by (e.g. [\"service_name\"]). Capped at the schema's ``group_by_limit``.\n    filters: Optional. List of ``{label_name, label_values, metric_label_name?}``; multiple filters combine with AND, ``label_values`` combine with OR.\n    data_aggregation_type: \"table\" (default, one row per group for the whole window) or \"timeseries\" (one series per group/column, with datapoints over the window).\n    limit: Optional. Max rows to return (table aggregation only; not supported with ``entity_id``).\n    sort_column: Optional. Column id to sort by (table aggregation only; not supported with ``entity_id``) — use with ``limit`` to find top/bottom offenders (e.g. highest ``errorRate``).\n    sort_order: Optional. \"asc\" or \"desc\" (table aggregation only; not supported with ``entity_id``).\n    widget_name: Optional. Free-form label attached to the query for server-side telemetry/attribution.\n\nReturns:\n    For \"table\": JSON with ``rows`` (one flat dict per group, entity identity fields merged with each requested column's resolved value or ``{\"error\": ...}``) and ``columns`` (metadata: id/display_name/unit). For \"timeseries\": JSON with ``series`` (one entry per group/column with ``datapoints``), ``columns``, and ``total_series_count``.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_service_catalog_entity_type_schema",
+      "title": "Get Service Catalog Entity Type Schema",
+      "domain": "Service Catalog",
+      "status": "current",
+      "description": "Get the schema for one service-catalog entity type: available data columns (RED metrics, health, resource saturation, dependencies, ...) and the labels it can be grouped or filtered by. Columns and labels differ per entity type (e.g. ``service`` exposes ``errorRate``/``health``/``dependencyLatencyPerRequest``; ``k8s-pod`` exposes ``cpuUtilizationProm``/``k8sPodMemoryWorkingSet``/``oomKilled``; ``jvm`` exposes ``jvmHeapUsedPercent``/``jvmThreadCount``/GC columns).\n\nArgs:\n    entity_type: An entity type from ``list_service_catalog_entity_types`` (either form, e.g. \"service\" or \"ENTITY_TYPE_SERVICE\").\n\nReturns:\n    JSON with ``columns`` (id/display_name/unit), ``default_columns``, ``groupable_labels``, ``group_by_limit`` (max labels combinable in one ``group_by``), ``default_group_by``, ``filterable_labels``, and ``required_filters``.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_service_map_relations_graph",
+      "title": "Get service dependency graph",
+      "domain": "Service Map",
+      "status": "current",
+      "description": "Get a graph of interactions between services from Coralogix tracing for a specific timeframe.\n\nIf ``service_name`` is omitted, the tool returns a compact full service-map graph as an adjacency map.\nIf ``service_name`` is provided, the tool returns only services interacting with that service, including node and edge details.\n\nArgs:\n    time_range: Optional time range with ``start_time`` and ``end_time`` in ISO-8601 UTC format.\n        If omitted, defaults to the last hour.\n    service_name: Optional service name to focus the graph on.\n\nReturns:\n    JSON string with ``service_map``. For a focused service query this is a detailed graph with ``nodes`` and ``edges``.\n    For an unfiltered query this is a compact adjacency graph keyed by source service.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_system_dataset_info",
+      "title": "Get system dataset info",
+      "domain": "Logs, Spans & Datasets",
+      "status": "current",
+      "description": "Get detailed information and schema guidance for one `system/...` dataset.\n\nUse this after `list_datasets` when the user wants to understand what a specific system dataset contains before querying it.\n\nArgs:\n    dataset: A single system dataset path such as `system/engine.queries`.\n\nReturns:\n    JSON string with the dataset source, description, optional additional context, and the dataset schema.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_view",
+      "title": "Get saved view",
+      "domain": "Saved Views",
+      "status": "current",
+      "description": "Get a saved view by ID.\n\nArgs:\n    view_id: Saved view ID.\n\nReturns:\n    JSON string containing the saved view.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "get_view_folder",
+      "title": "Get saved view folder",
+      "domain": "Saved Views",
+      "status": "current",
+      "description": "Get a saved view folder by ID.\n\nArgs:\n    folder_id: Saved view folder ID.\n\nReturns:\n    JSON string containing the saved view folder.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_dashboard_folders",
+      "title": "List dashboard folders",
+      "domain": "Dashboards",
+      "status": "current",
+      "description": "List all dashboard folders.\n\nReturns:\n    JSON string containing the dashboard folders.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_dataprime_commands",
+      "title": "Browse DataPrime commands and functions",
+      "domain": "DataPrime Language",
+      "status": "current",
+      "description": "List of all DataPrime commands and/or functions.\n\n\nArgs:\n    kind: Which section of the catalog to include: ``all`` (commands and functions), ``commands`` only, or ``functions`` only.\n    name: Optional substring matched case-insensitively against the catalog entry **key** only (not description or syntax). Omit to return all entries in the chosen ``kind``.\n\nReturns:\n    JSON string with ``count`` and ``items``. Each item includes ``name``, ``type`` (``command`` or ``function``), ``syntax``, ``description`` (may be shortened), and ``category``.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_dataprime_constructs",
+      "title": "List DataPrime constructs",
+      "domain": "DataPrime Language",
+      "status": "current",
+      "description": "List all available DataPrime constructs (commands and functions).\n\nReturns:\n    Plain-text list of commands and functions with short descriptions.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_datasets",
+      "title": "List datasets",
+      "domain": "Logs, Spans & Datasets",
+      "status": "current",
+      "description": "List system and user-defined datasets available for DataPrime queries.\n\nUse this tool before querying named datasets when you need to discover valid dataset sources beyond `source logs` and `source spans`.\n\nReturns:\n    JSON string with `alwaysAvailableSources`, per-type counts, truncation metadata, and a `datasets` array containing both system and user-defined dataset sources.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_infrastructure_filters",
+      "title": "List Infrastructure Filters",
+      "domain": "Infrastructure",
+      "status": "current",
+      "description": "List the attributes infrastructure resources can be filtered by, with their accepted values.\n\nThis is the discovery step before filtering in ``list_infrastructure_resources``: attribute names are per resource type and dynamic, so never guess one.\n\nArgs:\n    category: Optional. Limit to one category, e.g. \"Hosts\".\n    resource_type: Optional. Limit to one resource type within the category.\n\nBoth narrow the result and both may be omitted: pinning a type gives that type's attributes, a category alone spans its types, and omitting both gives the union across every type.\n\nReturns:\n    JSON array of ``{name, kind, wildcard, values, types}``. ``kind`` is what the value looks like — ``string`` is free text, ``status`` is a fixed set, and ``number``, ``bool`` and ``date`` mean themselves. ``values`` lists the accepted values of a fixed set; pass one of them, spelled as reported. ``wildcard`` says whether a ``*`` is accepted in the value. ``types`` names the category/type pairs carrying the attribute, which is what makes the unpinned form usable.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_infrastructure_resource_types",
+      "title": "List Infrastructure Resource Types",
+      "domain": "Infrastructure",
+      "status": "current",
+      "description": "List the available infrastructure resource types (category/type pairs).\n\nCategories and types are dynamic per account, so never guess them. To learn what resources can be *filtered* by rather than which types exist, use ``list_infrastructure_filters``.\n\nReturns:\n    JSON array of ``{category, type, label}``. Pass ``category`` and ``type`` verbatim to ``list_infrastructure_resources`` (as its ``category`` and ``resource_type`` arguments). Some entries may have an empty ``type``; those cannot be listed.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_infrastructure_resources",
+      "title": "List Infrastructure Resources",
+      "domain": "Infrastructure",
+      "status": "current",
+      "description": "List infrastructure resources matching a filter, one page window at a time.\n\nCall ``list_infrastructure_filters`` first whenever the attribute is not already known — it returns the attribute names, which values a fixed set accepts, and where a ``*`` is allowed. Never guess an attribute name or a status value.\n\nAt least one of ``category``, ``resource_type`` or ``resource_filter`` must be given; none is required on its own.\n\nArgs:\n    category: Optional. Resource category, e.g. \"Hosts\".\n    resource_type: Optional. Resource type within the category, e.g. \"EC2_Instances\".\n    resource_filter: Optional. A filter tree. Each node is exactly one of:\n        ``{\"match\": {\"field\": \"<attribute>\", \"values\": [\"<value>\", ...]}}`` — the values OR each other.\n        ``{\"bool\": {\"op\": \"AND\" | \"OR\", \"operands\": [<node>, ...]}}`` — nests freely.\n        So ``OS=linux AND (Health=Critical OR Region=eu-west-1)`` is\n        ``{\"bool\": {\"op\": \"AND\", \"operands\": [{\"match\": {\"field\": \"OS\", \"values\": [\"linux\"]}}, {\"bool\": {\"op\": \"OR\", \"operands\": [{\"match\": {\"field\": \"Health\", \"values\": [\"Critical\"]}}, {\"match\": {\"field\": \"Region\", \"values\": [\"eu-west-1\"]}}]}}]}}``.\n        A ``*`` in a value is a wildcard, allowed only where ``list_infrastructure_filters`` reports ``wildcard: true``. A status attribute accepts only the values it lists.\n        Requiring several values of one attribute means one ``match`` node per value under a ``bool`` ``AND``, which is how to narrow on two substrings at once: ``{\"bool\": {\"op\": \"AND\", \"operands\": [{\"match\": {\"field\": \"Name\", \"values\": [\"*alert*\"]}}, {\"match\": {\"field\": \"Name\", \"values\": [\"*processing*\"]}}]}}`` returns the names holding both.\n        ``Category`` and ``Type`` are not filterable attributes — they have their own arguments, never appear in ``list_infrastructure_filters`` output, and a ``match`` on them is rejected.\n    name_filter: Optional, legacy. Case-insensitive substring match on the resource's display name. Requires ``category`` and ``resource_type``, and cannot be combined with ``resource_filter`` — prefer filtering on the name attribute.\n    scope_filter: Optional, legacy. Map of scope key to value; allowed keys are ``service``, ``environment``, ``team``, combining with AND. Requires ``category`` and ``resource_type``, and cannot be combined with ``resource_filter``.\n    start_row: Optional. First row of the page window (default 0).\n    end_row: Optional. Exclusive end row of the page window (default ``start_row + 100``). The window cannot reach past row 10,000 — narrow the filter instead of paging further.\n\nReturns:\n    JSON with ``total_count`` (fleet-wide match count, independent of the window), ``returned_count``, and ``resources`` (array of ``{resource_id, name, category, type, columns}``). Compare ``total_count`` against ``returned_count`` before reasoning over the rows: if it exceeds what you can page to, narrow the filter rather than paging further. Never pages automatically — keep paging while ``start_row + returned_count < total_count``. A valid attribute that is simply unpopulated returns 0 rows; that is an answer, not a failure to retry. Pass ``resource_id`` values verbatim to the health-history and raw-data tools.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_service_catalog_entities",
+      "title": "List Service Catalog Entities",
+      "domain": "Service Catalog",
+      "status": "current",
+      "description": "List the known entities (e.g. service names) of one entity type.\n\nArgs:\n    entity_type: An entity type from ``list_service_catalog_entity_types`` (either form, e.g. \"service\" or \"ENTITY_TYPE_SERVICE\").\n\nReturns:\n    JSON array of ``{name, system, last_seen, deployments, environments}``. Pass ``name`` verbatim as ``entity_id`` to ``get_service_catalog_entities_data`` for a single-entity drilldown.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_service_catalog_entity_types",
+      "title": "List Service Catalog Entity Types",
+      "domain": "Service Catalog",
+      "status": "current",
+      "description": "List the entity types the account has service-catalog data for (e.g. service, database, jvm, k8s-pod). Available entity types are dynamic per account.\n\nReturns:\n    JSON array of ``{entity_type, id, display_name, description}``. Pass ``entity_type`` (or ``id``) verbatim as the ``entity_type`` argument to the other service-catalog tools.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_view_folders",
+      "title": "List saved view folders",
+      "domain": "Saved Views",
+      "status": "current",
+      "description": "List all saved view folders.\n\nReturns:\n    JSON string containing the saved view folders.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "list_views",
+      "title": "List saved views",
+      "domain": "Saved Views",
+      "status": "current",
+      "description": "List all saved views.\n\nReturns:\n    JSON string containing the saved views.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_ai_custom_evaluation",
+      "title": "Manage custom AI evaluation",
+      "domain": "AI Center",
+      "status": "current",
+      "description": "Manage **custom evaluation policies** and their links to applications. Pick `action`:\n- `create` (needs `body`): create a custom evaluation policy. `body` holds name, instructions, policyType, and optional description/violates/safe/examples/applicationIds.\n- `update` (needs `evaluation_id`, `updates`): partial patch of a custom evaluation policy — omitted fields are left unchanged.\n- `add_policy` (needs `evaluation_id`, `application_id`): attach a custom evaluation policy to an app.\n- `remove_policy` (needs `evaluation_id`, `application_id`): detach a policy from an app. Removes only the link; the policy object survives and can be re-added. (This is how you 'remove' a policy from an app — there is no policy delete.)\nReturns JSON.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_ai_evaluation",
+      "title": "Manage AI evaluation",
+      "domain": "AI Center",
+      "status": "current",
+      "description": "Create, update, or delete a **configured evaluation** (a policy enabled on an AI application). Pick `action`:\n- `create` (needs `application`, `subsystem`, `config`, `target` [PROMPT|RESPONSE]; optional `is_enabled`, `threshold`): enable an evaluation on an app. `config` is the EvaluationConfig object (the `$case` variant + its fields).\n- `update` (needs `evaluation_id`, `updates`): partial patch — include only the fields to change; omitted fields are left unchanged.\n- `delete` (needs `evaluation_id`): remove the evaluation from its app. Destructive and not reversible.\nReturns JSON.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_ai_model_pricing",
+      "title": "Manage AI model pricing",
+      "domain": "AI Center",
+      "status": "current",
+      "description": "Set the team's custom per-model pricing overrides. `action` is `set` (needs `prices`). Pricing is **team-wide** (not per-app) and applies to new data only; `set` replaces the whole set — pass the full map, or an empty map `{}` to clear all overrides. `prices` maps model name to a pricing object {inputPricePerMillionTokens, outputPricePerMillionTokens, cacheReadPricePerMillionTokens, cacheWritePricePerMillionTokens}. Returns JSON.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_alerts",
+      "title": "Manage Coralogix Alerts",
+      "domain": "Alerts & Cases",
+      "status": "current",
+      "description": "Unified tool for all Coralogix alert operations.\n\nActions:\n- create: Create a new alert. Requires 'alert'.\n  IMPORTANT: Always ask the user for priority (P1-P5) - never pick one yourself.\n  Returns: { message, alertId }\n\n- get: Get alert by ID. Requires 'id'.\n  Returns: { message, alert }\n\n- list: List alerts. Optional 'nameFilter' for case-insensitive name matching.\n  Returns: { message, alerts }\n\n- update: Update existing alert. Requires 'alert' (must include 'id' field).\n  IMPORTANT: First use get/list to fetch the existing alert, modify it, then pass the complete alert here.\n  Returns: { message, alertId }\n\n- delete: Delete alert by ID. Requires 'id'.\n  IMPORTANT: If you only have the alert name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'alert'.\n  IMPORTANT: For existing alerts, use get/list first to fetch it.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate K8s YAML for Coralogix Operator. Requires 'alert'.\n  IMPORTANT: For existing alerts, use get/list first to fetch it.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for Coralogix Provider. Requires 'alert'.\n  IMPORTANT: For existing alerts, use get/list first to fetch it.\n  Returns: { message, tfHCL }\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- alert: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_alerts_scheduler",
+      "title": "Manage Coralogix Alerts Schedulers",
+      "domain": "Alerts & Cases",
+      "status": "current",
+      "description": "Unified tool for all Coralogix alerts scheduler operations.\n\nActions:\n- create: Create a new alerts scheduler. Requires 'alertsScheduler'.\n  Returns: { message, alertsSchedulerId }\n\n- get: Get alerts scheduler by ID. Requires 'id'.\n  Returns: { message, alertsScheduler }\n\n- list: List alerts schedulers. Optional 'nameFilter' for case-insensitive name matching.\n  Returns: { message, alertsSchedulers }\n\n- update: Update existing alerts scheduler. Requires 'alertsScheduler' (must include 'id' field).\n  IMPORTANT: First use get/list to fetch the existing alerts scheduler, modify it, then pass the complete alertsScheduler here.\n  Returns: { message, alertsSchedulerId }\n\n- delete: Delete alerts scheduler by ID. Requires 'id'.\n  IMPORTANT: If you only have the alerts scheduler name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'alertsScheduler'.\n  IMPORTANT: For existing alerts schedulers, use get/list first to fetch it.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate Kubernetes YAML for Coralogix Operator kind AlertScheduler. Requires 'alertsScheduler'.\n  IMPORTANT: For existing alerts schedulers, use get/list first to fetch it. Alert-ID filters generate deterministic placeholder Alert resource refs.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for coralogix_alerts_scheduler. Requires 'alertsScheduler'.\n  IMPORTANT: For existing alerts schedulers, use get/list first to fetch it.\n  Returns: { message, tfHCL }\n\nSupported subset:\n- exactly one of filter.metaLabels or filter.alertsUniqueIds\n- all-alert filters are rejected because the current operator AlertScheduler CRD requires exactly one alert selector\n- one-time schedules, recurring always-active schedules, and recurring dynamic daily, weekly, and monthly schedules\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- alertsScheduler: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_cases",
+      "title": "Manage and inspect cases",
+      "domain": "Alerts & Cases",
+      "status": "current",
+      "description": "Manage or inspect one or more cases.\n\nLifecycle actions mutate a case. First retrieve the live case with ``get_alerts_object`` and confirm the intended action and ID with the user.\n\nArgs:\n    action: ``update``, ``comment``, ``assign``, ``unassign``, ``acknowledge``, ``unacknowledge``, ``resolve``, ``close``, ``set_priority``, ``clear_priority``, ``events``, ``get_event``, or ``notifications``.\n    case_ids: Required for every action except ``get_event``. One or more case UUIDs or readable IDs such as ``CASE-123``. Lifecycle and ``events`` actions use the first ID; ``notifications`` uses every ID.\n    event_id: Required for ``get_event``. Case event UUID.\n    title: Optional replacement title for ``update``.\n    resolution_reason: Optional resolution reason for ``update``.\n    text: Required comment text for ``comment``.\n    user_id: Required Coralogix user ID for ``assign``.\n    reason: Required resolution reason for ``resolve``.\n    priority: Required priority for ``set_priority``: ``P1`` through ``P5``.\n\nReturns:\n    JSON string containing the Cases API response. ``events`` returns the case event timeline; ``get_event`` returns one event; ``notifications`` returns notification delivery records.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_custom_roles",
+      "title": "Manage Coralogix Custom Roles",
+      "domain": "Account & Access",
+      "status": "current",
+      "description": "Unified tool for Coralogix custom role operations.\n\nThis tool supports the shared Terraform and Kubernetes Operator subset: name, description, parentRoleName, and permissions. Custom role IDs are strings in MCP payloads and are parsed to numeric IDs only when calling the Coralogix Role Management API.\n\nActions:\n- create: Create a new custom role. Requires 'customRole' with name, description, parentRoleName, and permissions.\n  Returns: { message, customRoleId }\n\n- get: Get custom role by ID. Requires 'id'.\n  Returns: { message, customRole }\n\n- list: List custom roles. Optional 'nameFilter' for case-insensitive name filtering.\n  Returns: { message, customRoles }\n\n- update: Update an existing custom role. Requires 'customRole' with id, name, description, and permissions.\n  IMPORTANT: parentRoleName cannot be changed. If provided, it must match the current backend parentRoleName.\n  Returns: { message, customRoleId }\n\n- delete: Delete custom role by ID. Requires 'id'.\n  IMPORTANT: If you only have the custom role name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'customRole'.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate K8s YAML for Coralogix Operator. Requires 'customRole'.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for Coralogix Provider. Requires 'customRole'.\n  Returns: { message, tfHCL }\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- customRole: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_dashboard_folders",
+      "title": "Create or delete dashboard folders",
+      "domain": "Dashboards",
+      "status": "current",
+      "description": "Create or delete dashboard folders.\n\nArgs:\n    action: ``create`` to create a folder or ``delete`` to remove one.\n    body: Required for ``create``. Provide ``{\"requestId\": \"...\", \"folder\": {\"name\": \"...\", \"parentId\": \"...\"}}``. ``parentId`` is optional.\n    folder_id: Required for ``delete``.\n\nReturns:\n    JSON string containing the API response.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_dashboards",
+      "title": "Manage Coralogix Dashboards",
+      "domain": "Dashboards",
+      "status": "current",
+      "description": "Unified tool for Coralogix Custom Dashboard operations.\n\nThis tool follows the Management API. generate_terraform reports shapes the\nTerraform provider cannot express, such as an unattached action or a\ngoToDashboardId. Supported widget types: markdown, lineChart, dataTable, gauge,\npieChart, barChart, horizontalBarChart, hexagon, dynamic.\n\nEvery widget except markdown takes a query with exactly one source: logs,\nmetrics, spans or dataprime. The query shape follows the widget:\n- lineChart carries groupBy, groupBys and aggregations on the query. dataTable\n  carries the same under query.<source>.grouping, because the API models it so.\n- pieChart, barChart and horizontalBarChart take one aggregation plus groupNames\n  and optional stacking.\n- gauge and hexagon reduce the result to one number per group. Only a gauge\n  takes query.logs.aggregation and query.spans.aggregation.\n- dynamic is different: it takes queryDefinitions, a list, and then one\n  visualization form that draws them. Use describe_schema with dynamic to see\n  the fifteen forms and their fields.\n\nA widget can carry actions, the links offered on it. A dashboard can carry\nvariablesV2, variables, filters, annotations and unattachedActions above its\nwidgets. All are omitted here; fetch each with describe_schema and its name.\n\nIMPORTANT: To change an existing dashboard, first use get (or list to find the\nID) to fetch the dashboard, modify the returned document, then pass the complete\ndocument to update. Dashboards are replaced whole, not patched.\n\nIMPORTANT: create, update, get, and generate_* use MCP JSON in 'dashboard'.\nvalidate uses API-language JSON. Before create: generate_openapi, then\nvalidate with that openAPIDefinition, then create with the original MCP\ndashboard. issue.location is an API JSON Pointer.\n\nActions:\n- create: Create a new dashboard. Requires 'dashboard' in MCP JSON. Any 'dashboard.id' is ignored so the server assigns a new one.\n  Returns: { message, dashboardId }\n\n- get: Get a dashboard by ID. Requires 'id'.\n  Returns: { message, dashboard, accessPolicy }\n\n- list: List dashboards from the dashboard catalog. Optional 'nameFilter' for case-insensitive name matching.\n  Returns: { message, dashboards }\n\n- update: Replace an existing dashboard. Requires 'dashboard' with 'id'.\n  Returns: { message, dashboardId }\n\n- delete: Delete a dashboard by ID. Requires 'id'.\n  IMPORTANT: If you only have the dashboard name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate the OpenAPI JSON create payload. Requires 'dashboard' in MCP JSON.\n  The dashboard ID and the server-generated slug are removed, so the payload creates a copy.\n  Returns: { message, openAPIDefinition } which is API-language JSON for validate.\n\n- validate: Check without saving. Requires API-language JSON in\n  'openAPIDefinition', or 'id' for a saved dashboard. Do not pass MCP JSON in\n  'dashboard'. Pass a JSON object. A JSON string is also accepted for backward\n  compatibility. Empty issues means valid. Issues are not a tool error.\n  Returns: { message, issues }\n\n- generate_kubernetes: Generate Kubernetes YAML for Coralogix Operator kind Dashboard. Requires 'dashboard'.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for coralogix_dashboard. Requires 'dashboard'.\n  Returns: { message, tfHCL }\n\n- describe_schema: Get the full JSON Schema for one omitted part. Requires 'schemaName', whose description lists the available names; omit it to get the lists.\n  IMPORTANT: The input schema is the dashboard skeleton only. Widget bodies,\n  the dynamic widget's visualization forms, a widget's actions list and the\n  dashboard-level lists are left as bare objects. Call describe_schema with a\n  name before building one.\n  Returns: { message, schemaName, schema }\n  or, with no schemaName, { message, schemaNames, dynamicForms, dashboardLists, widgetLists }\n\nRequired fields by action:\n- action: Always required\n- schemaName: Optional for describe_schema\n- id: Required for get, delete. For validate, checks a saved dashboard; mutually exclusive with openAPIDefinition\n- dashboard: Required for create, update, generate_*. MCP JSON. Rejected by validate\n- dashboard.id: Required for update\n- openAPIDefinition: Required for validate unless id is set. API-language JSON object. A JSON string from generate_openapi is also accepted for backward compatibility\n- nameFilter: Optional for list\n- accessPolicy: Optional for create, update, and generate_*",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_data_enrichments",
+      "title": "Manage Coralogix Data Enrichments",
+      "domain": "Ingestion & Enrichment",
+      "status": "current",
+      "description": "Unified tool for Coralogix data enrichment operations.\n\nThis tool supports the shared non-custom Terraform and Kubernetes Operator subset only: geoIp, suspiciousIp, and aws enrichments. Custom CSV enrichments, customEnrichmentData, raw OpenAPI enrichmentType payloads, and unknown enrichment types are rejected.\n\nData enrichments are account-level rules. Create adds new enrichments. Update requires an existing enrichment id, deletes that backend enrichment, then adds the replacement enrichment. Delete removes enrichments by id.\n\nActions:\n- create: Create one or more data enrichments. Requires 'dataEnrichments'.\n  Returns: { message, dataEnrichments }\n\n- get: Get data enrichment by ID. Requires 'id'.\n  Returns: { message, dataEnrichment }\n\n- list: List supported data enrichments. Optional 'fieldNameFilter' for case-insensitive substring matching over supported fieldName values.\n  Returns: { message, dataEnrichments }\n\n- update: Replace one existing data enrichment. Requires 'dataEnrichments' with exactly one enrichment containing id.\n  IMPORTANT: First use get/list to fetch the existing enrichment, modify it, then pass the complete enrichment here.\n  Returns: { message, dataEnrichment }\n\n- delete: Delete data enrichment by ID. Requires 'id'.\n  Returns: { message, remainingDataEnrichments }\n\n- generate_openapi: Generate OpenAPI JSON payload for adding enrichments. Requires 'dataEnrichments'.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate Kubernetes YAML for Coralogix Operator kind Enrichment. Requires 'dataEnrichments'.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for coralogix_data_enrichments. Requires 'dataEnrichments'.\n  Returns: { message, tfHCL }\n\nSupported enrichment fields:\n- geoIp: fieldName, enrichedFieldName, selectedColumns, withAsn\n- suspiciousIp: fieldName, enrichedFieldName, selectedColumns\n- aws: fieldName, enrichedFieldName, selectedColumns, resourceType\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- fieldNameFilter: Optional for list\n- dataEnrichments: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_events2metrics",
+      "title": "Manage Coralogix Events2Metrics",
+      "domain": "Metrics",
+      "status": "current",
+      "description": "Unified tool for all Coralogix events2metric operations.\n\nActions:\n- create: Create a new events2metric. Requires 'events2metric'.\n  Returns: { message, events2metricId }\n\n- get: Get events2metric by ID. Requires 'id'.\n  Returns: { message, events2metric }\n\n- list: List events2metrics. Optional 'nameFilter' for case-insensitive name matching.\n  Returns: { message, events2metrics }\n\n- update: Update existing events2metric. Requires 'events2metric' (must include 'id' field).\n  IMPORTANT: First use get/list to fetch the existing events2metric, modify it, then pass the complete events2metric here.\n  Returns: { message, events2metricId }\n\n- delete: Delete events2metric by ID. Requires 'id'.\n  IMPORTANT: If you only have the events2metric name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'events2metric'.\n  IMPORTANT: For existing events2metrics, use get/list first to fetch it.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate K8s YAML for Coralogix Operator. Requires 'events2metric'.\n  IMPORTANT: For existing events2metrics, use get/list first to fetch it.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for Coralogix Provider. Requires 'events2metric'.\n  IMPORTANT: For existing events2metrics, use get/list first to fetch it.\n  Returns: { message, tfHCL }\n\nSupported subset:\n- exactly one of logsQuery or spansQuery\n- dataSource, metricLabels, metricFields, permutationsLimit, query filters, and aggregations min, max, count, avg, sum, samples, histogram\n- logsQuery.alias and custom aggregation targetMetricName values are not exposed and are rejected when found on fetched resources\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- events2metric: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_global_routers",
+      "title": "Manage Coralogix Global Routers",
+      "domain": "Notifications",
+      "status": "current",
+      "description": "Unified tool for Coralogix notification-center global router operations.\n\nActions:\n- create: Create a new global router. Requires 'globalRouter'.\n  Returns: { message, globalRouterId }\n\n- get: Get global router by ID. Requires 'id'.\n  Returns: { message, globalRouter }\n\n- list: List global routers. Optional 'nameFilter' for case-insensitive name filtering.\n  Returns: { message, globalRouters }\n\n- update: Update existing global router. Requires 'globalRouter' with 'id'.\n  IMPORTANT: First use get/list to fetch the existing global router, modify it, then pass the complete globalRouter here.\n  Returns: { message, globalRouterId }\n\n- delete: Delete global router by ID. Requires 'id'.\n  IMPORTANT: If you only have the global router name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'globalRouter'.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate K8s YAML for Coralogix Operator. Requires 'globalRouter'.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for Coralogix Provider. Requires 'globalRouter'.\n  Returns: { message, tfHCL }\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- globalRouter: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_integrations",
+      "title": "Manage Coralogix Integrations",
+      "domain": "Ingestion & Enrichment",
+      "status": "current",
+      "description": "Unified tool for Coralogix Integration Service operations.\n\nIntegrations use the shared Terraform and Kubernetes Operator surface: integrationKey, version, and free-form parameters. Supported parameter values are string, number, boolean, and list of strings. Sensitive/API-key parameter variants and nested objects are rejected because they cannot be exported losslessly.\n\nActions:\n- create: Validate and create a deployed integration. Requires 'integration'.\n  Returns: { message, integrationId }\n\n- get: Get deployed integration by ID. Requires 'id'.\n  Returns: { message, integration }\n\n- list: List available integration packages. Optional 'nameFilter' for case-insensitive filtering by integration key or display name.\n  Returns: { message, integrations }\n\n- update: Validate and update an existing deployed integration. Requires 'integration' with 'id' or top-level 'id'.\n  Returns: { message, integrationId }\n\n- delete: Delete deployed integration by ID. Requires 'id'.\n  Returns: { message }\n\n- generate_openapi: Generate Integration Service JSON payload. Requires 'integration'.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate Kubernetes YAML for Coralogix Operator kind Integration. Requires 'integration'.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for coralogix_integration. Requires 'integration'.\n  Returns: { message, tfHCL }",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_parsing_rules",
+      "title": "Manage Coralogix Parsing Rules",
+      "domain": "Ingestion & Enrichment",
+      "status": "current",
+      "description": "Unified tool for all Coralogix parsing rule operations.\n\nActions:\n- create: Create a new parsing rule. Requires 'parsingRule'.\n  Returns: { message, parsingRuleId }\n\n- get: Get parsing rule by ID. Requires 'id'.\n  Returns: { message, parsingRule }\n\n- list: List parsing rules. Optional 'nameFilter' for case-insensitive name matching.\n  Returns: { message, parsingRules }\n\n- update: Update existing parsing rule. Requires 'parsingRule' (must include 'id' field).\n  IMPORTANT: First use get/list to fetch the existing parsing rule, modify it, then pass the complete parsing rule here.\n  Returns: { message, parsingRuleId }\n\n- delete: Delete parsing rule by ID. Requires 'id'.\n  IMPORTANT: If you only have the parsing rule name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'parsingRule'.\n  IMPORTANT: For existing parsing rules, use get/list first to fetch it.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate K8s YAML for Coralogix Operator. Requires 'parsingRule'.\n  IMPORTANT: For existing parsing rules, use get/list first to fetch it.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for Coralogix Provider. Requires 'parsingRule'.\n  IMPORTANT: For existing parsing rules, use get/list first to fetch it.\n  Returns: { message, tfHCL }\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- parsingRule: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_presets",
+      "title": "Manage Coralogix Presets",
+      "domain": "Notifications",
+      "status": "current",
+      "description": "Unified beta tool for Coralogix notification-center preset operations.\n\nThis tool supports the Terraform and Coralogix Operator intersection for preset types: slack, generic_https, pagerduty, pagerduty_incidents, email, microsoft_teams, eventbridge, and incident_io. service_now is not supported until Coralogix Operator parity lands.\n\nActions:\n- create: Create a new custom preset. Requires 'preset'.\n  Returns: { message, presetId }\n\n- get: Get preset by ID. Requires 'id'.\n  Returns: { message, preset }\n\n- list: List supported presets. Optional 'nameFilter' for case-insensitive name filtering.\n  Returns: { message, presets }\n\n- update: Update existing custom preset. Requires 'preset' with 'id'.\n  IMPORTANT: First use get/list to fetch the existing preset, modify it, then pass the complete preset here.\n  Returns: { message, presetId }\n\n- delete: Delete custom preset by ID. Requires 'id'.\n  IMPORTANT: If you only have the preset name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'preset'.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate K8s YAML for Coralogix Operator. Requires 'preset'.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for Coralogix Provider. Requires 'preset'.\n  Returns: { message, tfHCL }\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- preset: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_quota_allocation_rule_set",
+      "title": "Manage Coralogix Quota Allocation Rule Set",
+      "domain": "Data Usage",
+      "status": "current",
+      "description": "Unified tool for the Coralogix team quota allocation rule set.\n\nQuota allocation splits the team's daily ingest quota across telemetry types such as logs, spans, and metrics. There is one set per team. The API has no list and no resource id path.\n\nGet the live set, change the full customer rule list, then create or update to replace that list. Update is not a patch of one rule. Delete clears customer-managed rules only. After delete, get still succeeds. Coralogix-managed rules (cxManaged true) may remain. get returns those rows so you can see them. create, update, and generate_openapi omit them and never send cxManaged.\n\nKnown entityType values include logs, spans, metrics, cpuProfiles, memoryProfiles, browserLogs, browserLogs/v2, sessionRecordings, olly, auditEvents, alerts, quotaEvents, engineQueries, engineSchemaFields, labsLimitViolations, notificationDeliveries. entityType is a free string.\n\nActions:\n- create: Replace all customer rules using POST. Requires 'quotaAllocationRuleSet' with the full customer 'rules' list. Send rules: [] to clear customer rules. Omitting rules is invalid.\n  Returns: { message, quotaAllocationRuleSet }\n\n- get: Get the live team set. Do not send an id.\n  Returns: { message, quotaAllocationRuleSet }\n\n- update: Replace all customer rules using PUT. Requires 'quotaAllocationRuleSet' with the full customer 'rules' list.\n  IMPORTANT: First use get, modify the complete customer list, then pass the complete quotaAllocationRuleSet here. Do not send only the rules you changed.\n  Returns: { message, quotaAllocationRuleSet }\n\n- delete: Clear customer-managed rules. Do not send an id. get still works afterward.\n  Returns: { message }\n\n- generate_openapi: Generate the write OpenAPI JSON body (no cxManaged). Requires 'quotaAllocationRuleSet'.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate Kubernetes YAML for Coralogix Operator kind QuotaAllocationRuleSet. Requires 'quotaAllocationRuleSet'.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for coralogix_quota_allocation_rule_set. Requires 'quotaAllocationRuleSet'. Always includes the rules attribute, including rules = [].\n  Returns: { message, tfHCL }\n\nlist is not supported. This team has one rule set. Use get.\n\nRequired fields by action:\n- action: Always required\n- quotaAllocationRuleSet: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_recording_rules_groups_set",
+      "title": "Manage Coralogix Recording Rule Group Sets",
+      "domain": "Metrics",
+      "status": "current",
+      "description": "Unified tool for Coralogix recording rule group set operations.\n\nThis v1 tool supports structured groups only. Terraform-only yamlContent/yaml_content input is rejected because it is not shared by OpenAPI, Kubernetes Operator, and Terraform generated output.\n\nActions:\n- create: Create a new recording rule group set. Requires 'recordingRulesGroupsSet'.\n  Returns: { message, recordingRulesGroupsSetId }\n\n- get: Get recording rule group set by ID. Requires 'id'.\n  Returns: { message, recordingRulesGroupsSet }\n\n- list: List recording rule group sets. Optional 'nameFilter' for case-insensitive name filtering.\n  Returns: { message, recordingRulesGroupsSets }\n\n- update: Update existing recording rule group set. Requires 'recordingRulesGroupsSet' with 'id'.\n  IMPORTANT: First use get/list to fetch the existing recording rule group set, modify it, then pass the complete recordingRulesGroupsSet here.\n  Returns: { message, recordingRulesGroupsSetId }\n\n- delete: Delete recording rule group set by ID. Requires 'id'.\n  IMPORTANT: If you only have the name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'recordingRulesGroupsSet'.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate Kubernetes YAML for Coralogix Operator kind RecordingRuleGroupSet. Requires 'recordingRulesGroupsSet'.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for coralogix_recording_rules_groups_set. Requires 'recordingRulesGroupsSet'.\n  Returns: { message, tfHCL }\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- recordingRulesGroupsSet: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_slo_v2s",
+      "title": "Manage Coralogix SLO v2 Resources",
+      "domain": "SLO",
+      "status": "current",
+      "description": "Unified tool for Coralogix SLO v2 operations.\n\nSupported SLO shapes:\n- request-based metric SLI: good and total event queries\n- window-based metric SLI: one query compared against a threshold per window\n- APM SLI: error rate or latency for a service from the APM Service Catalog\n- time frames: unspecified, 7_days, 14_days, 21_days, 28_days\n- window-based and APM latency windows: 1_minute, 5_minutes\n- comparison operators: greater_than, less_than, greater_than_or_equals, less_than_or_equals\n- missingDataStrategy on a window-based SLI: good, bad. Omit it for the API default\n- productType: apm, which requires sli.apmSli and which the API otherwise infers\n- ownershipTags: service, environment and team, each by staticValues or labelKeys\n\nNot supported, and rejected with an explanatory error:\n- writable grouping, which the API derives from the query instead\n- the 90_days time frame\n- an APM filter with no values, which no valid Terraform can express\n\nActions:\n- create: Create a new SLO v2. Requires 'slo'.\n  Returns: { message, sloId }\n\n- get: Get SLO v2 by ID. Requires 'id'.\n  Returns: { message, slo }\n\n- list: List SLO v2 resources. Optional 'nameFilter' for case-insensitive name matching.\n  Returns: { message, slos }\n\n- update: Update existing SLO v2. Requires 'slo' with 'id'.\n  IMPORTANT: First use get/list to fetch the existing SLO, modify it, then pass the complete SLO here.\n  Returns: { message, sloId }\n\n- delete: Delete SLO v2 by ID. Requires 'id'.\n  IMPORTANT: If you only have the SLO name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'slo'.\n  IMPORTANT: For existing SLOs, use get/list first to fetch it.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate Kubernetes YAML for Coralogix Operator kind SLO. Requires 'slo'.\n  IMPORTANT: For existing SLOs, use get/list first to fetch it.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for coralogix_slo_v2. Requires 'slo'.\n  IMPORTANT: For existing SLOs, use get/list first to fetch it.\n  Returns: { message, tfHCL }\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- slo: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_tco_log_policies",
+      "title": "Manage Coralogix TCO Log Policies",
+      "domain": "Data Usage",
+      "status": "current",
+      "description": "Unified tool for Coralogix TCO log policy operations.\n\nTCO log policy Terraform and Kubernetes resources are atomic overwrite resources: generated Terraform or Kubernetes describes the complete logs policy list and applying it replaces the complete backend logs policy set. Prefer tcoLogPolicies for generation. Single-policy generation is allowed but returns a warning.\n\nPriority and dataset routing: a policy sets its priority either at the policy level or on every entry of targets, never both, and one of the two is required. Use targets to route matched logs to specific named datasets, each with its own required priority and optional quota-based priorityOverride and archive retention. Targets must be unique by dataspace and dataset. Omit priority when targets is set. get and list return whichever of the two the policy actually uses, so their output can be edited and fed straight back into update or generate_*.\n\nMatching: a policy matches either by structured rules (severities, applications, subsystems) or by a raw dpxlExpression, never both - when dpxlExpression is set, omit severities, applications, and subsystems. dpxlExpression must start with a version tag such as <v1>. An optional policy-level priorityOverride sets quota-based usage tiers and is only valid alongside a policy-level priority (not with targets, which carry their own per-target priorityOverride).\n\nActions:\n- create: Create a TCO log policy. Requires tcoLogPolicy.\n- get: Get a TCO log policy by ID. Requires id.\n- list: List TCO log policies. Optional nameFilter performs case-insensitive substring matching by policy name.\n- update: Update a TCO log policy. Requires tcoLogPolicy with id.\n- delete: Delete a TCO log policy by ID. Requires id.\n- generate_openapi: Generate AtomicOverwriteLogPoliciesRequest JSON. Requires tcoLogPolicies or tcoLogPolicy.\n- generate_kubernetes: Generate TCOLogsPolicies YAML. Requires tcoLogPolicies or tcoLogPolicy.\n- generate_terraform: Generate coralogix_tco_policies_logs HCL. Requires tcoLogPolicies or tcoLogPolicy.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_tco_rum_policies",
+      "title": "Manage Coralogix TCO RUM Policies",
+      "domain": "Data Usage",
+      "status": "current",
+      "description": "Unified tool for Coralogix TCO RUM policy operations.\n\nTCO RUM policy Terraform and Kubernetes resources are atomic overwrite resources: generated Terraform or Kubernetes describes the complete RUM policy list and applying it replaces the complete backend RUM policy set. Prefer tcoRumPolicies for generation. Single-policy generation is allowed but returns a warning.\n\nRUM policies mirror log policies but have no dataset routing (no targets), so priority is always set at the policy level and is required. A policy matches either by structured rules (severities, applications, subsystems) or by a raw dpxlExpression, never both: when dpxlExpression is set, omit severities, applications, and subsystems. dpxlExpression must start with a version tag such as <v1> and is evaluated against the canonical $d.* schema (do not reference $d.cx_rum.*). An optional policy-level priorityOverride sets quota-based usage tiers; each tier's priority must be higher than the policy priority (a tier at or below the base has no effect). RUM policies require the RUM policies feature to be enabled for the team.\n\nActions:\n- create: Create a TCO RUM policy. Requires tcoRumPolicy.\n- get: Get a TCO RUM policy by ID. Requires id.\n- list: List TCO RUM policies. Optional nameFilter performs case-insensitive substring matching by policy name.\n- update: Update a TCO RUM policy. Requires tcoRumPolicy with id.\n- delete: Delete a TCO RUM policy by ID. Requires id.\n- generate_openapi: Generate AtomicOverwriteRumPoliciesRequest JSON. Requires tcoRumPolicies or tcoRumPolicy.\n- generate_kubernetes: Generate TCORumPolicies YAML. Requires tcoRumPolicies or tcoRumPolicy.\n- generate_terraform: Generate coralogix_tco_policies_rum HCL. Requires tcoRumPolicies or tcoRumPolicy.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_tco_trace_policies",
+      "title": "Manage Coralogix TCO Trace Policies",
+      "domain": "Data Usage",
+      "status": "current",
+      "description": "Unified tool for Coralogix TCO trace policy operations.\n\nTCO trace policy Terraform and Kubernetes resources are atomic overwrite resources: generated Terraform or Kubernetes describes the complete traces policy list and applying it replaces the complete backend traces policy set. Prefer tcoTracePolicies for generation. Single-policy generation is allowed but returns a warning.\n\nTraces have no dataset routing (no targets), so priority is always set at the policy level. A policy matches either by structured rules (applications, subsystems, actions, services, tags) or by a raw dpxlExpression, never both - when dpxlExpression is set, omit the structured rules. dpxlExpression must start with a version tag such as <v1>. An optional policy-level priorityOverride sets quota-based usage tiers; each tier's priority must be more restrictive than the base priority (a tier at or below the base has no effect).\n\nActions:\n- create: Create a TCO trace policy. Requires tcoTracePolicy.\n- get: Get a TCO trace policy by ID. Requires id.\n- list: List TCO trace policies. Optional nameFilter performs case-insensitive substring matching by policy name.\n- update: Update a TCO trace policy. Requires tcoTracePolicy with id.\n- delete: Delete a TCO trace policy by ID. Requires id.\n- generate_openapi: Generate AtomicOverwriteSpanPoliciesRequest JSON. Requires tcoTracePolicies or tcoTracePolicy.\n- generate_kubernetes: Generate TCOTracesPolicies YAML. Requires tcoTracePolicies or tcoTracePolicy.\n- generate_terraform: Generate coralogix_tco_policies_traces HCL. Requires tcoTracePolicies or tcoTracePolicy.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_view_folders",
+      "title": "Create, update, or delete saved view folders",
+      "domain": "Saved Views",
+      "status": "current",
+      "description": "Create, update, or delete a saved view folder.\n\nArgs:\n    action: ``create``, ``update``, or ``delete``.\n    body: Required for ``create`` and ``update``. Saved view folder API request body.\n    folder_id: Required for ``update`` and ``delete``.\n\nReturns:\n    JSON string containing the API response.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "manage_views",
+      "title": "Create, update, or delete saved views",
+      "domain": "Saved Views",
+      "status": "current",
+      "description": "Create, update, or delete a saved view.\n\nArgs:\n    action: ``create``, ``update``, or ``delete``.\n    body: Required for ``create`` and ``update``. Saved view API request body.\n    view_id: Required for ``update`` and ``delete``.\n\nReturns:\n    JSON string containing the API response.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "olly_ask",
+      "title": "Ask Olly AI Assistant",
+      "domain": "Olly Agent",
+      "status": "current",
+      "description": "Send a question to Olly AI assistant and get a response.\n\nArgs:\n    message: The question or request for Olly.\n    chat_id: Optional. Pass a ``chat_id`` from a previous response to continue the conversation with context.\n    model: Optional. AI model for ``model_choice``. If omitted, the Olly API uses its default.\n    should_block: Optional. Default: ``false`` (async). Keep the default for investigations and any non-trivial request: the interaction starts without waiting for completion, returning immediately with ``status=in_progress`` and no ``response`` text - poll with ``olly_get_interaction`` until status is terminal (``completed``, ``error``, or ``stopped``). Only pass ``true`` for a short, simple question you expect Olly to answer almost immediately (for example \"what alerts fired today\"), where waiting synchronously is simpler than polling.\n    agent_to_agent_mode: Optional. When ``true`` (default), Olly acts as a sub-agent to the calling agent: shorter responses, no charts/tables, asks clarifying questions instead of guessing, and relies on the parent agent's broader context.\n\nReturns:\n    Async (default): JSON with ``chat_id``, ``interaction_id``, ``status`` (typically ``in_progress``), and a ``note`` to poll via ``olly_get_interaction``.\n    Blocking (short questions only): JSON with ``chat_id``, ``interaction_id``, ``status``, ``response`` (assistant text or user-facing fallbacks when empty), and optionally ``interaction_mode`` / ``model_choice``.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": true,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use"
+    },
+    {
+      "name": "olly_get_artifact",
+      "title": "Get Olly Artifact",
+      "domain": "Olly Agent",
+      "status": "current",
+      "description": "Get an artifact's metadata and download URL.\n\nArtifacts contain query results, charts, or tables generated by Olly. The download URL provides access to the full artifact data (gzipped JSON).\n\nArgs:\n    artifact_id: The artifact ID.\n\nReturns:\n    JSON with ``id``, ``type`` (coralogix_logs, coralogix_spans, coralogix_metrics, etc.), ``params`` (query details), ``download_url`` (pre-signed URL), and timestamps.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use"
+    },
+    {
+      "name": "olly_get_chat",
+      "title": "Get Olly Chat",
+      "domain": "Olly Agent",
+      "status": "current",
+      "description": "Get a specific Olly chat with its full conversation history.\n\nUse this to retrieve the messages and context from a previous chat session.\n\nArgs:\n    chat_id: The chat ID to retrieve.\n\nReturns:\n    JSON with chat metadata and message history from the Olly API (``response_format=content_blocks``).",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use"
+    },
+    {
+      "name": "olly_get_interaction",
+      "title": "Get Olly Interaction",
+      "domain": "Olly Agent",
+      "status": "current",
+      "description": "Get an Olly interaction's status and response.\n\nUse this to poll for completion after starting an interaction with ``olly_ask`` (the default, ``should_block=false``).\n\nArgs:\n    chat_id: The chat ID from the ``olly_ask`` response.\n    interaction_id: The interaction ID from the ``olly_ask`` response.\n\nReturns:\n    JSON with ``chat_id``, ``interaction_id``, ``status``, ``response`` (assistant text, or a user-facing fallback when empty), and optionally ``interaction_mode`` / ``model_choice``.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use"
+    },
+    {
+      "name": "olly_list_artifacts",
+      "title": "List Olly Artifacts",
+      "domain": "Olly Agent",
+      "status": "current",
+      "description": "List artifacts (query results, charts, tables) generated by Olly during conversations.\n\nArgs:\n    chat_id: Optional. Filter artifacts from a specific chat session.\n\nReturns:\n    JSON array of artifacts with ``id``, ``type`` (coralogix_logs, coralogix_spans, coralogix_metrics, etc.), ``chat_id``, ``interaction_id``, ``created_at``, and ``chat_title``.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use"
+    },
+    {
+      "name": "olly_list_chats",
+      "title": "List Olly Chats",
+      "domain": "Olly Agent",
+      "status": "current",
+      "description": "List the user's Olly chat sessions.\n\nUse this to find previous conversations the user had with Olly. Each chat has an ID that can be used to continue the conversation or retrieve its artifacts.\n\nReturns:\n    JSON array of chats with ``id``, ``title``, ``created_at``, and ``type``.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": "x-allow-costly-use"
+    },
+    {
+      "name": "query_data_usage",
+      "title": "Query billable data usage",
+      "domain": "Data Usage",
+      "status": "current",
+      "description": "Query billable data usage in daily or hourly buckets.\n\nBefore calling this tool, call ``get_data_usage_capabilities`` in the current session. Build ``query`` only from the labels, measurement kinds, units, interval options, and request limits returned there.\n\nArgs:\n    query: Data Usage Query API request body. Pass the capabilities-derived object unchanged.\n\nReturns:\n    JSON string containing the aggregated data-usage buckets and entries.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "query_dataprime",
+      "title": "Query DataPrime (logs, spans, or datasets)",
+      "domain": "Logs, Spans & Datasets",
+      "status": "current",
+      "description": "Execute a DataPrime query against Coralogix logs, spans, or named datasets.\n\nArgs:\n    query: DataPrime query to execute. Must start with a source clause, e.g. `source logs`, `source spans`, `source rum.events` for RUM / Real User Monitoring (load the `coralogix-rum` skill), or `source system/labs.cases.state_updates` for fleet case analytics (load the `case-analytics` skill).\n    start_date: Range start, ISO 8601 UTC (`YYYY-MM-DDTHH:MM:SSZ`). Default: 15 minutes before `end_date`, or 15 minutes before now if `end_date` is omitted.\n    end_date: Range end, ISO 8601 UTC. Default: 15 minutes after `start_date`, or now if `start_date` is omitted.\n    limit: Maximum number of rows to return.\n\nReturns:\n    JSON string with ``records`` and ``dataprime_warnings``.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "query_promql_instant",
+      "title": "Run PromQL instant query (metrics)",
+      "domain": "Metrics",
+      "status": "current",
+      "description": "Run an instant PromQL expression against Coralogix Metrics (Prometheus `query` endpoint).\n\n\nArgs:\n    query (str):\n        A valid PromQL expression evaluated at a single point in time.\n        Example: sum by (service) (rate(http_requests_total[5m])).\n\n    time (str, optional):\n        Optional RFC-3339 timestamp (UTC) for the evaluation time.\n        If omitted, the query is evaluated at the current time.\n\nReturns:\n    Formatted query results (result type, series count, and sample values).\n    Large results are truncated with guidance to narrow the query.\n    Optional ``warnings`` / ``infos`` from the metrics API are appended when present.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "query_promql_range",
       "title": "Run PromQL range query (metrics)",
       "domain": "Metrics",
-      "apiVersion": "v1",
-      "status": "deprecated",
+      "status": "current",
+      "description": "Run a range PromQL expression against Coralogix Metrics (Prometheus `query_range` endpoint).\n\n\nArgs:\n    query (str):\n        A valid PromQL range expression (evaluated at each step across the window).\n        Example: rate(http_requests_total[5m]).\n\n    start (str):\n        RFC-3339 timestamp (UTC) for the start of the time range. Required.\n\n    end (str):\n        RFC-3339 timestamp (UTC) for the end of the time range. Required.\n\n    step (str):\n        Query step width as duration. Examples: 30s, 20m, 6h, 1d. Required.\n\n        Important note:\n        The step size should be large enough so that a series returns ~20 records.\n        For example:\n        * If the range is 1 hour, the step should be about 3 minutes\n        * If the range is 1 day, the step should be about 1 hour\n        * For 1 week, about 8 hours, etc.\n\n    limit (int):\n        Maximum number of ``[timestamp, value]`` samples kept per series in the tool output (also sent as the API ``limit`` parameter). Must be between 1 and 200. If the API returns more samples for a series, the tool truncates ``values`` and adds truncation fields (see Returns).\n\nReturns:\n    JSON string: array of Prometheus ``query_range`` matrix series (the API ``data.result`` list). Each element has ``metric`` (string-to-string label map) and ``values``: an array of ``[timestamp, value]`` pairs. Timestamps and values are often **strings** in Prometheus JSON; Coralogix may return the timestamp as a **number** (Unix seconds) and the value as a **string**. If a series has more than ``limit`` samples, ``values`` is shortened to the first ``limit`` entries and the series gains ``truncated_result`` (bool), ``truncated_result_len`` (same as ``limit``), and ``original_result_len`` (count before truncation).",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -909,53 +895,11 @@
       "requiresHeader": null
     },
     {
-      "name": "read_metrics_guidelines_v1",
-      "title": "Read metrics querying best practices",
-      "domain": "Metrics",
-      "apiVersion": "v1",
-      "status": "deprecated",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "search_metrics",
-      "title": "Search metrics by description or name pattern",
-      "domain": "Metrics",
-      "apiVersion": "v1",
-      "status": "deprecated",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "read_rum_log_intro_docs_v1",
-      "title": "Read RUM log fields and query guide",
-      "domain": "RUM",
-      "apiVersion": "v1",
-      "status": "deprecated",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "read_rum_sdk_docs_v1",
+      "name": "read_rum_sdk_docs",
       "title": "Read Coralogix RUM SDK documentation",
       "domain": "RUM",
-      "apiVersion": "v1",
-      "status": "deprecated",
+      "status": "current",
+      "description": "Get the official Coralogix RUM SDK setup guide and API reference. This is the authoritative source for RUM SDK integration.\n\n**IMPORTANT**: Always use this tool FIRST when the user asks about any of the following — do NOT search the codebase or guess the setup:\n- Setting up, installing, or configuring Coralogix RUM SDKs (Browser, React Native, Flutter, Android, iOS)\n- Adding RUM monitoring, real user monitoring, or browser/mobile tracking to an app\n- Enabling session recording or replay\n- Uploading source maps for minified stack traces (@coralogix/rum-cli)\n- Understanding minified/obfuscated error stack traces\n- Any question about Coralogix RUM SDK configuration options, API, or initialization\n\nArgs:\n    topic: The documentation topic to fetch. Must be one of:\n        - \"BROWSER_SDK\" - Browser SDK (@coralogix/browser) setup, installation, configuration, initialization, and session recording docs\n        - \"SOURCE_MAPS\" - Source map upload CLI tool docs for de-obfuscating stack traces\n        - \"REACT_NATIVE_SDK\" - React Native plugin (@coralogix/react-native-plugin) setup and configuration docs\n        - \"FLUTTER_SDK\" - Flutter plugin (cx_flutter_plugin) setup and configuration docs\n        - \"ANDROID_SDK\" - Android SDK setup and configuration docs\n        - \"IOS_SDK\" - iOS SDK setup and configuration docs\n\nReturns:\n    Plain text extracted from official SDK README or documentation for the selected topic (content may be truncated to a maximum length).",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -965,11 +909,109 @@
       "requiresHeader": null
     },
     {
-      "name": "get_schemas_v1",
-      "title": "List dataset schemas and fields",
-      "domain": "Schemas",
-      "apiVersion": "v1",
-      "status": "deprecated",
+      "name": "search_alert_definitions",
+      "title": "Search alert definitions",
+      "domain": "Alerts & Cases",
+      "status": "current",
+      "description": "Search alert definitions in the team with flexible filters.\n\nThis tool returns up to 30 matching alert definitions. Use the filters to narrow the result set before truncation.\n\nArgs:\n    order_bys: Optional list of order-by fields.\n    name_matcher: How to match `name` values. Default: ``EQUALS``.\n    name: Optional list of alert names to filter by.\n    alert_type_matcher: How to match `alert_types`. Default: ``EQUALS``.\n    alert_types: Optional list of alert types to filter by.\n    priority_matcher: How to match `priorities`. Default: ``EQUALS``.\n    priorities: Optional list of alert priorities to filter by.\n    enabled: Optional filter for enabled/disabled alerts.\n    modified_start_time: Optional start time for modification date filtering.\n    modified_end_time: Optional end time for modification date filtering.\n    last_triggered_start_time: Optional start time for last-triggered filtering.\n    last_triggered_end_time: Optional end time for last-triggered filtering.\n\nReturns:\n    JSON string of the returned alert definition summary payload.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_dashboard",
+      "title": "Search indexed dashboards by meaning or ID",
+      "domain": "Dashboards",
+      "status": "current",
+      "description": "Find dashboards by semantic search or retrieve one's indexed summary by ID. For the full definition, use ``manage_dashboards(action=\"get\")``.\n\nExactly one of ``query`` or ``id`` must be provided:\n- ``query`` performs semantic search across indexed dashboards.\n- ``id`` fetches one dashboard's indexed summary, which may be incomplete.\n\nArgs:\n    query: Natural-language description of the dashboard to find. Mutually exclusive with ``id``.\n    id: Exact Coralogix dashboard ID. Mutually exclusive with ``query``.\n    limit: Maximum search results when using ``query`` (1-100, default 10). Ignored when ``id`` is provided.\n\nReturns:\n    When ``query``: JSON string with ``total`` and ``results``.\n    When ``id``: JSON string with the indexed dashboard summary. Large dashboards may include ``truncated`` metadata.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_docs",
+      "title": "Search Coralogix docs",
+      "domain": "Documentation",
+      "status": "current",
+      "description": "Search official Coralogix docs by title or path.\n\nArgs:\n    query: Search text (for example \"MCP setup\" or \"API keys\").\n    limit: Max results (1-20, default 5).\n\nReturns:\n    Plain-text list of matching doc titles and path suffixes (under /docs/).",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_for_fields",
+      "title": "Search log/span fields by description and/or example value",
+      "domain": "Field Discovery",
+      "status": "current",
+      "description": "Batch search for log or span DataPrime field paths by description and/or value. Supports up to 5 search items at once.\n\nEach search item should be one of:\n- {\"description\": \"...\"} - Search by semantic description (e.g., \"customer identifier fields\")\n- {\"value\": \"...\"} - Search by entity/value (e.g., \"Acme Corp\", \"production\"); case-insensitive substring match on schema-store example values.\n\nArgs:\n    search_items: List of search items (up to 5). Each item is either a description or value search (not both).\n    source: Dataset to search: ``logs`` or ``spans``.\n\nReturns:\n    Search results with matching field paths and descriptions.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_labels",
+      "title": "Search label names across metrics",
+      "domain": "Metrics",
+      "status": "current",
+      "description": "Find label names matching a substring across all metrics. Use when the user mentions a dimension/filter but you don't yet know which metric carries it, then follow up with `search_relevant_metrics(<label>, mode=\"by_label\")`. See the metrics skill for the full workflow.\n\nArgs:\n    substring: Substring to match against label names (case-insensitive), e.g. \"user_email\" or \"email\".\n\nReturns:\n    One matching label name per line (exact match first), or an error if none match.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_queries",
+      "title": "Search saved dashboard queries",
+      "domain": "Dashboards",
+      "status": "current",
+      "description": "Search saved dashboard queries by meaning or by field reference.\n\nUse ``search_type`` to choose the mode:\n- ``semantic``: semantic search over saved dashboard queries. Requires ``query_text``.\n- ``by_field``: find saved queries that reference a specific field path. Requires ``field_path``.\n\nArgs:\n    search_type: ``semantic`` or ``by_field``.\n    query_text: Natural-language query description for semantic search.\n    field_path: Exact field path for field-based lookup, such as ``metadata.service``.\n    limit: Maximum number of results to return (1-100, default 10).\n\nReturns:\n    JSON string with ``total`` and ``results``.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "search_relevant_metrics",
+      "title": "Search relevant metrics",
+      "domain": "Metrics",
+      "status": "current",
+      "description": "Discover metrics by description, name pattern, or label. See the metrics skill for the full workflow.\n\nArgs:\n    query: The search term, interpreted per `mode`.\n    mode:\n        - \"by_description\" (default): semantic search over a natural-language description of what to measure.\n        - \"by_name\": wildcard metric-name pattern, e.g. \"http_*\", \"*_total\".\n        - \"by_label\": list the metrics exposing an EXACT label name, to pick a bridge metric for a PromQL join (use after `search_labels`).\n    top_k: Max results, by_description only (default: 5).\n    name_filter: by_label only — metric-name substring to narrow a truncated result.\n    join_key_label: by_label only — an EXACT second label (the shared join key); returns only metrics carrying BOTH labels on the same series.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "show_dataprime_command_details",
+      "title": "Show DataPrime command syntax and details",
+      "domain": "DataPrime Language",
+      "status": "current",
+      "description": "Show details for a specific DataPrime command or function.\n\nArgs:\n    kind: Which section of the catalog to include: ``all`` (commands and functions), ``commands`` only, or ``functions`` only.\n    name: The exact name of the command or function to show details for.\n\nReturns:\n    JSON string with ``count`` and ``items``. Each item has ``name``, ``type`` (``command`` or ``function``), ``syntax``, ``description``, and ``category`` (``description`` may be shortened in the payload).",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,

@@ -55,7 +55,7 @@ Ask your assistant to list what it can do, or check the tool list directly:
 ./examples/curl/list-tools.sh https://api.eu2.coralogix.com/mgmt/api/v1/mcp "$CORALOGIX_API_KEY"
 ```
 
-You should see roughly 57 tools. If you see none, or an authentication error, go to [Troubleshooting](troubleshooting.md).
+You should see 66 tools — the six Olly agent tools are withheld unless the request sets `x-allow-costly-use`. If you see none, or an authentication error, go to [Troubleshooting](troubleshooting.md).
 
 ## 4. Run a first query
 

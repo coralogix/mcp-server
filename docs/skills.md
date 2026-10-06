@@ -1,3 +1,5 @@
+<!-- Generated from the live Coralogix MCP server. Do not hand-edit; regenerate with scripts/generate-mcp-public-repo.py in coralogix/documentation. -->
+
 # Skills
 
 The Coralogix MCP server ships **18 skills** — MCP resources served under `skill://<name>/SKILL.md` via progressive disclosure. A skill is a document that teaches the model something it cannot infer from a tool schema alone: DataPrime and PromQL syntax, which Coralogix field holds what, and the order to investigate an incident in.
@@ -7,6 +9,8 @@ The model loads a skill only when the conversation calls for it, so a client's c
 Each skill's `description` is the routing signal the model matches against, which is why they are reproduced verbatim below.
 
 > Skills are exposed as MCP **resources**, and resources are only served on the `v2` surface. A client pinned to `mcp-version: v1` gets tools but no skills. See [Headers and versioning](headers-and-versioning.md).
+
+A machine-readable version lives at [`resources/skills.json`](../resources/skills.json).
 
 ## Catalog
 
@@ -34,15 +38,13 @@ Fleet/aggregate analytics across many cases via the `system/labs.cases.state_upd
 
 Triage and manage Coralogix Cases. Load when a user wants to inspect a case, update it, add a comment, assign or acknowledge it, resolve or close it, change its priority, inspect its events, or inspect notification deliveries.
 
-**Bundled references** — `case-analytics.md`, `single-case.md`
-
 ### `coralogix-docs`
 
 **URI** — `skill://coralogix-docs/SKILL.md`
 
-Search and read official Coralogix platform documentation using **`search_docs`** and **`fetch_doc`**. Use when the user asks how Coralogix features work, how to configure or use the UI, set up integrations (OpenTelemetry, agents, collectors, webhooks), manage API keys, explore spans/traces/logs in the product, configure alerts/SLOs/dashboards, or needs authoritative product docs — not live tenant telemetry.
+| Search and read official Coralogix platform documentation using **`search_docs`** and **`fetch_doc`**. Use when the user asks how Coralogix features work, how to configure or use the UI, set up integrations (OpenTelemetry, agents, collectors, webhooks), manage API keys, explore spans/traces/logs in the product, configure alerts/SLOs/dashboards, or needs authoritative product docs — not live tenant telemetry.
 
-### `logs`
+### `coralogix-logs`
 
 **URI** — `skill://coralogix-logs/SKILL.md`
 
@@ -54,17 +56,17 @@ Log-specific concepts, fields, field discovery usage, and troubleshooting patter
 
 Use when the user asks to "query RUM", "cx_rum", "real user monitoring", "frontend errors", "browser errors", "mobile app crashes", "Web Vitals", "slow page load", "LCP", "CLS", "browser network failures", "user clicks", "session replay", "RUM SDK", "install RUM", "source maps for RUM", or wants to query Coralogix RUM telemetry using query_dataprime with `source rum.events`, DataPrime, and flat `$d.*` fields (field catalog is in Key Fields below), or needs official RUM SDK docs (read_rum_sdk_docs).
 
-### `spans`
+### `coralogix-spans`
 
 **URI** — `skill://coralogix-spans/SKILL.md`
 
-Span-specific concepts, fields, duration handling, and investigation patterns. The `dataprime` skill should be loaded alongside this skill. Load when you need to explore spans in your investigation or to answer a question about spans. For service-level error rate, latency percentiles, throughput, or health, load the `service-catalog` skill instead — it is the pre-aggregated path for those; use this skill when you need individual traces, span attributes, or span-level detail the catalog does not expose.
+Span-specific concepts, fields, duration handling, and investigation patterns. Load when you need to explore spans in your investigation or to answer a question about spans. For service-level error rate, latency percentiles, throughput, or health, load the `service-catalog` skill instead — it is the pre-aggregated path for those; use this skill when you need individual traces, span attributes, or span-level detail the catalog does not expose. Always load the `dataprime` skill together with this one before writing any query.
 
 ### `dashboards`
 
 **URI** — `skill://dashboards/SKILL.md`
 
-Dashboard analysis workflow and rules for using dashboard JSON, filters, variables, and time ranges. Load when the user provides dashboard context (for example a dashboard link or structured dashboard data).
+Dashboard analysis and editing workflow and rules for using dashboard JSON, filters, variables, and time ranges. Load when the user provides dashboard context (for example a dashboard link) or asks to create or change a dashboard.
 
 ### `data-usage`
 
@@ -90,19 +92,17 @@ Dataset discovery and source-selection guidance for DataPrime system and user-de
 
 Discover and inspect infrastructure resources — monitored resource types, resource inventory, per-resource health history and raw data. Load when the user asks to "show resource types", "list infrastructure resources", "what resources of this kind are monitored", "is this resource healthy", "resource health history", "when did this resource go critical", "get raw resource data", "infrastructure inventory", "find resources by name", "filter resources by service or environment", or wants to explore infrastructure resources and their data.
 
-### `metrics`
+### `metrics-query`
 
 **URI** — `skill://metrics-query/SKILL.md`
 
 PromQL fundamentals and metric discovery/query workflow. Load when you need to explore metrics in your investigation or to answer a question about metrics. For service-level RED metrics (error rate, latency percentiles, throughput) or pod/JVM resource saturation, load the `service-catalog` skill instead — it is a pre-aggregated path for that data; this skill is for custom, infrastructure, and hand-written PromQL work.
 
-**Bundled references** — `promql-guidelines.md`
-
-### `olly`
+### `olly` *(gated)*
 
 **URI** — `skill://olly/SKILL.md`
 
-Use when the user wants to investigate or analyze data in Coralogix, or explicitly asks to use Olly. Examples: "ask Olly", "why is my service slow", "what alerts fired", "investigate this incident", "analyze errors", "explain this spike".
+>- Use when the user wants to investigate or analyze data in Coralogix, or explicitly asks to use Olly. Examples: "ask Olly", "why is my service slow", "what alerts fired", "investigate this incident", "analyze errors", "explain this spike".
 
 ### `service-catalog`
 
@@ -121,9 +121,3 @@ Deep single-case investigation. Load when the user asks about one specific case 
 **URI** — `skill://views/SKILL.md`
 
 Manage Coralogix saved views and saved-view folders. Load when the user asks to create, update, delete, inspect, organize, or list saved log views.
-
-## Notes
-
-- **Skills often load in pairs.** The language skills (`dataprime`, `metrics`) are meant to be loaded alongside the domain skills (`logs`, `spans`, `coralogix-rum`) that reference them. The descriptions state these pairings explicitly.
-- **`olly` is opt-in.** The `olly` skill is withheld unless the request carries `x-allow-costly-use: true`, matching the gating on the Olly tools.
-- **A machine-readable index** is at [`resources/skills.json`](../resources/skills.json).

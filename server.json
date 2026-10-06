@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.coralogix/mcp-server",
   "title": "Coralogix",
-  "description": "Query and investigate Coralogix observability data — logs, spans, metrics, RUM, alerts, cases, dashboards and service catalog — from any MCP client.",
+  "description": "Query logs, metrics, traces, dashboards and alerts on the Coralogix platform.",
   "websiteUrl": "https://coralogix.com/docs/user-guides/mcp-server/setup/",
   "repository": {
     "url": "https://github.com/coralogix/mcp-server",
