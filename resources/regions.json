@@ -1,0 +1,47 @@
+{
+  "$comment": "Coralogix MCP endpoints per region. Source: https://coralogix.com/docs/user-guides/mcp-server/setup/",
+  "endpointPattern": "https://api.{region}.coralogix.com/mgmt/api/v1/mcp",
+  "transport": "streamable-http",
+  "regions": [
+    {
+      "id": "eu1",
+      "name": "EU1",
+      "mcpUrl": "https://api.eu1.coralogix.com/mgmt/api/v1/mcp"
+    },
+    {
+      "id": "eu2",
+      "name": "EU2",
+      "mcpUrl": "https://api.eu2.coralogix.com/mgmt/api/v1/mcp"
+    },
+    {
+      "id": "us1",
+      "name": "US1",
+      "mcpUrl": "https://api.us1.coralogix.com/mgmt/api/v1/mcp"
+    },
+    {
+      "id": "us2",
+      "name": "US2",
+      "mcpUrl": "https://api.us2.coralogix.com/mgmt/api/v1/mcp"
+    },
+    {
+      "id": "us3",
+      "name": "US3",
+      "mcpUrl": "https://api.us3.coralogix.com/mgmt/api/v1/mcp"
+    },
+    {
+      "id": "ap1",
+      "name": "AP1",
+      "mcpUrl": "https://api.ap1.coralogix.com/mgmt/api/v1/mcp"
+    },
+    {
+      "id": "ap2",
+      "name": "AP2",
+      "mcpUrl": "https://api.ap2.coralogix.com/mgmt/api/v1/mcp"
+    },
+    {
+      "id": "ap3",
+      "name": "AP3",
+      "mcpUrl": "https://api.ap3.coralogix.com/mgmt/api/v1/mcp"
+    }
+  ]
+}

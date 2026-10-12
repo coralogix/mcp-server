@@ -1,0 +1,9 @@
+{
+  "_comment": "Zed MCP configuration. Add to your Zed settings.json. Replace eu2 with your region.",
+  "context_servers": {
+    "coralogix": {
+      "source": "custom",
+      "url": "https://api.eu2.coralogix.com/mgmt/api/v1/mcp"
+    }
+  }
+}

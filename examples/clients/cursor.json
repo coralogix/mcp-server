@@ -1,0 +1,8 @@
+{
+  "_comment": "Cursor MCP configuration. Save as .cursor/mcp.json in your project, or ~/.cursor/mcp.json for all projects. Replace eu2 with your region.",
+  "mcpServers": {
+    "coralogix": {
+      "url": "https://api.eu2.coralogix.com/mgmt/api/v1/mcp"
+    }
+  }
+}

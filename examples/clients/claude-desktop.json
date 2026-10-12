@@ -1,0 +1,9 @@
+{
+  "_comment": "Claude Desktop MCP configuration. macOS: ~/Library/Application Support/Claude/claude_desktop_config.json — Windows: %APPDATA%\\Claude\\claude_desktop_config.json. Replace eu2 with your region. Restart Claude Desktop after editing.",
+  "mcpServers": {
+    "coralogix": {
+      "type": "http",
+      "url": "https://api.eu2.coralogix.com/mgmt/api/v1/mcp"
+    }
+  }
+}

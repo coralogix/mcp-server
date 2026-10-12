@@ -1,0 +1,11 @@
+{
+  "_comment": "Any client using the mcpServers shape, with the Olly agent tools enabled. The x-allow-costly-use header exposes six olly_* tools plus the olly skill; these consume Olly quota on your Coralogix account. See docs/headers-and-versioning.md. Replace eu2 with your region.",
+  "mcpServers": {
+    "coralogix": {
+      "url": "https://api.eu2.coralogix.com/mgmt/api/v1/mcp",
+      "headers": {
+        "x-allow-costly-use": "true"
+      }
+    }
+  }
+}

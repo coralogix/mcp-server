@@ -1,0 +1,9 @@
+{
+  "_comment": "VS Code MCP configuration. Save as .vscode/mcp.json in your workspace. Replace eu2 with your region.",
+  "servers": {
+    "coralogix": {
+      "type": "http",
+      "url": "https://api.eu2.coralogix.com/mgmt/api/v1/mcp"
+    }
+  }
+}
