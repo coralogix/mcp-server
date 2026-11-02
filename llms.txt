@@ -32,6 +32,6 @@
 ## Optional
 
 - [Registry publishing](docs/registry-publishing.md): How server.json is verified and published, and what to update when the server changes.
-- [Contributing](CONTRIBUTING.md): What belongs in this repository and how to propose changes.
+- [Contributing](CONTRIBUTING.md): What belongs in this repository and how to report problems. External pull requests are not accepted.
 - [Changelog](CHANGELOG.md): Documentation and metadata changes.
 - [Coralogix product documentation](https://coralogix.com/docs/user-guides/mcp-server/setup/): The canonical user-facing setup page.
