@@ -14,9 +14,9 @@ Headers apply per request, so the tool list a client sees is a function of the h
 
 The server serves two tool surfaces from one endpoint.
 
-**`v2` (default)** — the current surface: 66 tools, or 72 with `x-allow-costly-use`, plus skills. Consolidated tools with stable names: `query_dataprime` covers logs, spans and datasets; `query_promql_instant` and `query_promql_range` cover metrics.
+**`v2` (default)** — the current surface: 65 tools, or 71 with `x-allow-costly-use`, plus skills. Consolidated tools with stable names: `query_dataprime` covers logs, spans and datasets; `query_promql_instant` and `query_promql_range` cover metrics.
 
-**`v1` (deprecated)** — 12 legacy tools kept for integrations built before the v2 consolidation. Separate `get_logs_v1` / `get_traces_v1` tools instead of a single `query_dataprime`, `metrics__*_v1` naming, and **no skills** — the v1 surface disables resources entirely, so a v1 client loses all 18 skills.
+**`v1` (deprecated)** — 12 legacy tools kept for integrations built before the v2 consolidation. Separate `get_logs_v1` / `get_traces_v1` tools instead of a single `query_dataprime`, `metrics__*_v1` naming, and **no skills** — the v1 surface disables resources entirely, so a v1 client loses all 20 skills.
 
 ```json
 {

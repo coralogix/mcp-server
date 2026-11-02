@@ -6,7 +6,7 @@
 
 **Tools present but Olly missing.** Expected. Olly is opt-in — send `x-allow-costly-use: true`. See [Headers and versioning](headers-and-versioning.md).
 
-**Tools present but no skills.** You are pinned to `mcp-version: v1`, which serves no resources. Remove the header to get `v2` and all 18 skills.
+**Tools present but no skills.** You are pinned to `mcp-version: v1`, which serves no resources. Remove the header to get `v2` and all 20 skills.
 
 **Fewer tools than the catalog lists.** Your client may cap the tool count, or filter by annotation. Check your client's MCP settings before assuming a server problem.
 

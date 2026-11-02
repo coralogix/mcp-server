@@ -54,7 +54,7 @@ More in [`examples/prompts/`](examples/prompts/).
 
 ## What it can do
 
-**72 tools** across 20 capability domains — 66 by default, plus the six Olly agent tools when `x-allow-costly-use` is set — and **18 skills** that teach the model Coralogix query languages and investigation workflows on demand.
+**71 tools** across 21 capability domains — 65 by default, plus the six Olly agent tools when `x-allow-costly-use` is set — and **20 skills** that teach the model Coralogix query languages and investigation workflows on demand.
 
 | Domain | What it covers |
 |---|---|
@@ -91,8 +91,8 @@ Tools declare MCP annotations (`readOnlyHint`, `destructiveHint`, `openWorldHint
 | [Getting started](docs/getting-started.md) | Connect, verify, and run a first query |
 | [Regions](docs/regions.md) | Endpoint URL for every Coralogix region |
 | [Authentication](docs/authentication.md) | OAuth 2.1 and API key, permissions, tenancy |
-| [Tool catalog](docs/tools.md) | All 72 current tools, and the 12 deprecated ones, with annotations |
-| [Skills](docs/skills.md) | The 18 progressive-disclosure skills |
+| [Tool catalog](docs/tools.md) | All 71 current tools, and the 12 deprecated ones, with annotations |
+| [Skills](docs/skills.md) | The 20 progressive-disclosure skills |
 | [Headers and versioning](docs/headers-and-versioning.md) | `mcp-version`, `x-allow-costly-use` |
 | [Troubleshooting](docs/troubleshooting.md) | Common failures and what they mean |
 | [Registry publishing](docs/registry-publishing.md) | How `server.json` is published and verified |

@@ -2,7 +2,7 @@
 
 # Skills
 
-The Coralogix MCP server ships **18 skills** — MCP resources served under `skill://<name>/SKILL.md` via progressive disclosure. A skill is a document that teaches the model something it cannot infer from a tool schema alone: DataPrime and PromQL syntax, which Coralogix field holds what, and the order to investigate an incident in.
+The Coralogix MCP server ships **20 skills** — MCP resources served under `skill://<name>/SKILL.md` via progressive disclosure. A skill is a document that teaches the model something it cannot infer from a tool schema alone: DataPrime and PromQL syntax, which Coralogix field holds what, and the order to investigate an incident in.
 
 The model loads a skill only when the conversation calls for it, so a client's context is not paid up front for capabilities the session never touches. Skills are served automatically — there is nothing to configure or install.
 
@@ -18,7 +18,7 @@ A machine-readable version lives at [`resources/skills.json`](../resources/skill
 
 **URI** — `skill://ai-center/SKILL.md`
 
-Coralogix AI Center — observe, evaluate, and guard GenAI/LLM applications and agents. Use for ANY question or action about the user's AI/GenAI applications or agents — their behavior, prompts/responses, quality, hallucinations, guardrails, security, cost/tokens, errors, latency, evaluations/policies, model pricing, inventory/security posture, or configuration, including comparing or tracking agents over time. Combines GenAI span queries (via `query_dataprime`) with the `ai_center_*` / `manage_ai_*` configuration tools.
+Coralogix AI Center — observe, evaluate, and guard GenAI/LLM applications and agents. Use for questions or actions about the user's AI/GenAI applications or agents — their behavior, prompts/responses, chats, quality, hallucinations, guardrails, cost/tokens, evaluations/policies, model pricing or comparing or tracking agents over time. Combines GenAI span queries (via `query_dataprime`) with the `ai_center_*` / `manage_ai_*` configuration tools. Only load this skill when you have an indication that GenAI is related.
 
 ### `alerts`
 
@@ -31,6 +31,12 @@ Alert and case terminology, alert definitions, alert events, cases, IDs, alert t
 **URI** — `skill://case-analytics/SKILL.md`
 
 Fleet/aggregate analytics across many cases via the `system/labs.cases.state_updates` DataPrime dataset. Load when the user asks counts, trends, distributions or rates across cases — e.g. "MTTR last week", "how many P1 cases today", "active case count per team", "list active cases", "how long until activation on average". Do NOT load for one specific case ID — use alert tools for single-case investigation. Load the `dataprime` skill alongside this skill.
+
+### `case-management`
+
+**URI** — `skill://case-management/SKILL.md`
+
+Create and change Coralogix Cases — open a case, comment, re-prioritise, assign, acknowledge, retitle, resolve, close, mute, link and unlink. Load when the user asks to "open a case", "create a case for this", "raise a case for X", "comment on CASE-123", "make CASE-123 a P1", "change the priority", "assign this case to …", "acknowledge CASE-123", "resolve CASE-123", "close this case", "mute this case", "stop this case notifying", "link CASE-390 under CASE-383", "make this a child of", or to find a case they described in words rather than by ID. The `alerts` skill must be loaded alongside this skill for terminology. This skill performs mutations; for read-only investigation of one case use `single-case`, and for counts, trends and fleet questions use `case-analytics`.
 
 ### `cases`
 
@@ -90,7 +96,7 @@ Dataset discovery and source-selection guidance for DataPrime system and user-de
 
 **URI** — `skill://infrastructure/SKILL.md`
 
-Discover and inspect infrastructure resources — monitored resource types, resource inventory, per-resource health history and raw data. Load when the user asks to "show resource types", "list infrastructure resources", "what resources of this kind are monitored", "is this resource healthy", "resource health history", "when did this resource go critical", "get raw resource data", "infrastructure inventory", "find resources by name", "filter resources by service or environment", or wants to explore infrastructure resources and their data.
+Find and inspect infrastructure resources: monitored resource types, resource inventory, health history, raw source data, and configuration changes. Load when the user asks to "show resource types", "list infrastructure resources", "what resources of this kind are monitored", "is this resource healthy", "resource health history", "when did this resource go critical", "get raw resource data", "what changed on this host", "which resources changed configuration", "infrastructure inventory", "find resources by name", "filter resources by service or environment", or wants to explore infrastructure resources and their data.
 
 ### `metrics-query`
 
@@ -103,6 +109,12 @@ PromQL fundamentals and metric discovery/query workflow. Load when you need to e
 **URI** — `skill://olly/SKILL.md`
 
 >- Use when the user wants to investigate or analyze data in Coralogix, or explicitly asks to use Olly. Examples: "ask Olly", "why is my service slow", "what alerts fired", "investigate this incident", "analyze errors", "explain this spike".
+
+### `profiling`
+
+**URI** — `skill://profiling/SKILL.md`
+
+Continuous-profiling data (CPU, wall-clock, memory allocations and heap) for the user's services — which services consume the most CPU or memory, when usage spiked and which pod or version drove it, and which code paths and functions the CPU time or memory goes to (flame graphs). Load this for any CPU or memory question that needs in-depth investigation — why a service uses so much CPU or memory, which code paths or functions are responsible, memory growth or leak candidates (heap profiles over time), or what changed between two time windows — before Service Catalog saturation columns or PromQL. Use the Service Catalog for how much and when; use this skill for why.
 
 ### `service-catalog`
 

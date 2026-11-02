@@ -9,8 +9,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - Initial public documentation set: getting started, regions, authentication, headers and versioning, troubleshooting, registry publishing.
-- Tool catalog covering all 84 tools — 72 on the current `v2` surface and 12 deprecated `v1` tools — with MCP annotations.
-- Skills reference for all 18 skills, with the verbatim descriptions the model routes on.
+- Tool catalog covering all 83 tools — 71 on the current `v2` surface and 12 deprecated `v1` tools — with MCP annotations.
+- Skills reference for all 20 skills, with the verbatim descriptions the model routes on.
 - Registry metadata (`server.json`) in the official MCP registry schema, declaring the remote streamable-HTTP endpoint, the region URL variable, and the three optional headers.
 - Machine-readable manifests: `resources/tools.json`, `resources/skills.json`, `resources/regions.json`.
 - `llms.txt` documentation index for agent discovery.

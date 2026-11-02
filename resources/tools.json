@@ -7,7 +7,7 @@
     "endpointPathSuffix": "/mgmt/api/v1/mcp"
   },
   "toolCount": {
-    "total": 72,
+    "total": 71,
     "gated": 6,
     "deprecated": 0
   },
@@ -31,7 +31,7 @@
       "title": "Read AI Center configuration",
       "domain": "AI Center",
       "status": "current",
-      "description": "List the team's AI Center (AI v3) applications, each with its `guardrailsIntegrated` (guarded) status. Pass `application_ids` to fetch specific apps by UUID. Configuration data, not in span telemetry. Returns JSON.",
+      "description": "List the team's AI Center (AI v3) applications, each with its `guardrailsIntegrated` (guarded) status. Pass `application_ids` to fetch specific apps by UUID. Configuration data, not in span telemetry. Returns JSON `{items: [...]}`; a single-UUID lookup links to that app's drilldown page.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -60,6 +60,20 @@
       "domain": "DataPrime Language",
       "status": "current",
       "description": "Describe a DataPrime command or function construct.\n\nArgs:\n    request: Discriminated request with ``type`` (``command`` or ``function``) and ``id``.\n\nReturns:\n    Full documentation content for the requested construct.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "describe_infrastructure",
+      "title": "Describe Infrastructure",
+      "domain": "Infrastructure",
+      "status": "current",
+      "description": "Describe what infrastructure this account monitors and how it can be filtered.\n\nRun this before ``list_infrastructure_resources``. Types and attributes are per account, so never guess them.\n\nArgs:\n    aspect: ``types`` for every category and type in the account; ``attributes`` for what one type can be filtered by.\n    category: Required for ``attributes``, rejected for ``types``. The resource category, e.g. \"Hosts\" or \"Kubernetes\".\n    resource_type: Required for ``attributes``, rejected for ``types``. The resource type, e.g. \"EC2_Instances\" or \"Pods\".\n\nReturns:\n    JSON with ``types`` (``{category, type, label}``) for ``types``, or ``attributes`` (``{name, kind, wildcard, values, types}``) for ``attributes``.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -139,25 +153,11 @@
       "requiresHeader": null
     },
     {
-      "name": "get_infrastructure_resource_health_history",
-      "title": "Get Infrastructure Resource Health History",
+      "name": "get_infrastructure_resource_details",
+      "title": "Get Infrastructure Resource Details",
       "domain": "Infrastructure",
       "status": "current",
-      "description": "Get daily health samples for one infrastructure resource, oldest first.\n\nThe time window is fixed server-side (a trailing window of ~14 days, one sample per day at midnight UTC); it is not caller-controllable.\n\nArgs:\n    resource_id: The resource ID exactly as returned by ``list_infrastructure_resources`` (it embeds ``:``, ``|`` and ``=``; pass it verbatim, encoding is handled internally).\n\nReturns:\n    JSON array of ``{timestamp, status}`` where ``status`` is one of ``Healthy``, ``Critical``, ``Unmonitored``.",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "get_infrastructure_resource_raw_data",
-      "title": "Get Infrastructure Resource Raw Data",
-      "domain": "Infrastructure",
-      "status": "current",
-      "description": "Get the raw, source-specific document for one infrastructure resource as JSON.\n\nUse this instead of the health-history tool when you need source-specific detail (tags, instance metadata, configuration) rather than health.\n\nArgs:\n    resource_id: The resource ID exactly as returned by ``list_infrastructure_resources`` (pass it verbatim, encoding is handled internally).\n\nReturns:\n    JSON with ``raw_data``: a free-form object keyed by data source name (e.g. ``OTEL``). ``raw_data`` may be ``null`` with an explanatory ``note`` when no document exists — that is a cleanly absent document, not an error.",
+      "description": "Get one aspect of named infrastructure resources.\n\nAll times are ISO-8601 with an explicit offset or Z.\n\nArgs:\n    resource_ids: IDs from ``list_infrastructure_resources``, passed verbatim. Ask for a few at a time with ``raw_data``.\n    aspect: ``health_history`` for daily health samples; ``raw_data`` for the source-specific document; ``config_summary`` for which resources changed configuration; ``config_diff`` for what changed, field by field.\n    timestamp: Optional, ``raw_data`` only. Gives the newest version at or before that instant.\n    from_time: Required for ``config_summary`` and ``config_diff``.\n    to_time: Optional for those two, defaulting to now.\n\nReturns:\n    JSON with ``aspect``, ``requested_count``, ``returned_count`` and ``results`` (``{resource_id, data}``). ``raw_data`` is null when no document exists. A document past 10K chars is cut to a string and marked ``truncated``. Past 30K chars in total the rest are dropped with ``omitted_because``; ask for them again. ``config_diff`` answers for every valid id, so an empty ``changes`` list is explained by ``outcome``.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -335,39 +335,11 @@
       "requiresHeader": null
     },
     {
-      "name": "list_infrastructure_filters",
-      "title": "List Infrastructure Filters",
-      "domain": "Infrastructure",
-      "status": "current",
-      "description": "List the attributes infrastructure resources can be filtered by, with their accepted values.\n\nThis is the discovery step before filtering in ``list_infrastructure_resources``: attribute names are per resource type and dynamic, so never guess one.\n\nArgs:\n    category: Optional. Limit to one category, e.g. \"Hosts\".\n    resource_type: Optional. Limit to one resource type within the category.\n\nBoth narrow the result and both may be omitted: pinning a type gives that type's attributes, a category alone spans its types, and omitting both gives the union across every type.\n\nReturns:\n    JSON array of ``{name, kind, wildcard, values, types}``. ``kind`` is what the value looks like — ``string`` is free text, ``status`` is a fixed set, and ``number``, ``bool`` and ``date`` mean themselves. ``values`` lists the accepted values of a fixed set; pass one of them, spelled as reported. ``wildcard`` says whether a ``*`` is accepted in the value. ``types`` names the category/type pairs carrying the attribute, which is what makes the unpinned form usable.",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
-      "name": "list_infrastructure_resource_types",
-      "title": "List Infrastructure Resource Types",
-      "domain": "Infrastructure",
-      "status": "current",
-      "description": "List the available infrastructure resource types (category/type pairs).\n\nCategories and types are dynamic per account, so never guess them. To learn what resources can be *filtered* by rather than which types exist, use ``list_infrastructure_filters``.\n\nReturns:\n    JSON array of ``{category, type, label}``. Pass ``category`` and ``type`` verbatim to ``list_infrastructure_resources`` (as its ``category`` and ``resource_type`` arguments). Some entries may have an empty ``type``; those cannot be listed.",
-      "annotations": {
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "openWorldHint": false,
-        "idempotentHint": null
-      },
-      "requiresHeader": null
-    },
-    {
       "name": "list_infrastructure_resources",
       "title": "List Infrastructure Resources",
       "domain": "Infrastructure",
       "status": "current",
-      "description": "List infrastructure resources matching a filter, one page window at a time.\n\nCall ``list_infrastructure_filters`` first whenever the attribute is not already known — it returns the attribute names, which values a fixed set accepts, and where a ``*`` is allowed. Never guess an attribute name or a status value.\n\nAt least one of ``category``, ``resource_type`` or ``resource_filter`` must be given; none is required on its own.\n\nArgs:\n    category: Optional. Resource category, e.g. \"Hosts\".\n    resource_type: Optional. Resource type within the category, e.g. \"EC2_Instances\".\n    resource_filter: Optional. A filter tree. Each node is exactly one of:\n        ``{\"match\": {\"field\": \"<attribute>\", \"values\": [\"<value>\", ...]}}`` — the values OR each other.\n        ``{\"bool\": {\"op\": \"AND\" | \"OR\", \"operands\": [<node>, ...]}}`` — nests freely.\n        So ``OS=linux AND (Health=Critical OR Region=eu-west-1)`` is\n        ``{\"bool\": {\"op\": \"AND\", \"operands\": [{\"match\": {\"field\": \"OS\", \"values\": [\"linux\"]}}, {\"bool\": {\"op\": \"OR\", \"operands\": [{\"match\": {\"field\": \"Health\", \"values\": [\"Critical\"]}}, {\"match\": {\"field\": \"Region\", \"values\": [\"eu-west-1\"]}}]}}]}}``.\n        A ``*`` in a value is a wildcard, allowed only where ``list_infrastructure_filters`` reports ``wildcard: true``. A status attribute accepts only the values it lists.\n        Requiring several values of one attribute means one ``match`` node per value under a ``bool`` ``AND``, which is how to narrow on two substrings at once: ``{\"bool\": {\"op\": \"AND\", \"operands\": [{\"match\": {\"field\": \"Name\", \"values\": [\"*alert*\"]}}, {\"match\": {\"field\": \"Name\", \"values\": [\"*processing*\"]}}]}}`` returns the names holding both.\n        ``Category`` and ``Type`` are not filterable attributes — they have their own arguments, never appear in ``list_infrastructure_filters`` output, and a ``match`` on them is rejected.\n    name_filter: Optional, legacy. Case-insensitive substring match on the resource's display name. Requires ``category`` and ``resource_type``, and cannot be combined with ``resource_filter`` — prefer filtering on the name attribute.\n    scope_filter: Optional, legacy. Map of scope key to value; allowed keys are ``service``, ``environment``, ``team``, combining with AND. Requires ``category`` and ``resource_type``, and cannot be combined with ``resource_filter``.\n    start_row: Optional. First row of the page window (default 0).\n    end_row: Optional. Exclusive end row of the page window (default ``start_row + 100``). The window cannot reach past row 10,000 — narrow the filter instead of paging further.\n\nReturns:\n    JSON with ``total_count`` (fleet-wide match count, independent of the window), ``returned_count``, and ``resources`` (array of ``{resource_id, name, category, type, columns}``). Compare ``total_count`` against ``returned_count`` before reasoning over the rows: if it exceeds what you can page to, narrow the filter rather than paging further. Never pages automatically — keep paging while ``start_row + returned_count < total_count``. A valid attribute that is simply unpopulated returns 0 rows; that is an answer, not a failure to retry. Pass ``resource_id`` values verbatim to the health-history and raw-data tools.",
+      "description": "List infrastructure resources matching a filter, one page window at a time.\n\nCall ``describe_infrastructure`` first for attribute names and accepted values.\nAt least one of ``category``, ``resource_type`` or ``resource_filter`` is required.\n\nArgs:\n    category: Optional. A category from ``describe_infrastructure``'s ``types``, e.g. \"Hosts\" or \"Kubernetes\".\n    resource_type: Optional. A type from ``describe_infrastructure``'s ``types``, e.g. \"EC2_Instances\" or \"Pods\". Pass it exactly as listed.\n    resource_filter: Optional. Filter tree over attributes. ``Category`` and ``Type`` are not attributes; use their own arguments.\n    start_row: Optional. First row of the window (default 0).\n    limit: Optional. Rows in the window, 1 to 100 (default 100).\n\nReturns:\n    JSON with ``total_count``, ``returned_count`` and ``resources``. Keep paging while ``start_row + returned_count < total_count``.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -479,7 +451,7 @@
       "title": "Manage Coralogix Alerts",
       "domain": "Alerts & Cases",
       "status": "current",
-      "description": "Unified tool for all Coralogix alert operations.\n\nActions:\n- create: Create a new alert. Requires 'alert'.\n  IMPORTANT: Always ask the user for priority (P1-P5) - never pick one yourself.\n  Returns: { message, alertId }\n\n- get: Get alert by ID. Requires 'id'.\n  Returns: { message, alert }\n\n- list: List alerts. Optional 'nameFilter' for case-insensitive name matching.\n  Returns: { message, alerts }\n\n- update: Update existing alert. Requires 'alert' (must include 'id' field).\n  IMPORTANT: First use get/list to fetch the existing alert, modify it, then pass the complete alert here.\n  Returns: { message, alertId }\n\n- delete: Delete alert by ID. Requires 'id'.\n  IMPORTANT: If you only have the alert name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'alert'.\n  IMPORTANT: For existing alerts, use get/list first to fetch it.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate K8s YAML for Coralogix Operator. Requires 'alert'.\n  IMPORTANT: For existing alerts, use get/list first to fetch it.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for Coralogix Provider. Requires 'alert'.\n  IMPORTANT: For existing alerts, use get/list first to fetch it.\n  Returns: { message, tfHCL }\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- alert: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
+      "description": "Unified tool for all Coralogix alert operations.\n\nActions:\n- create: Create a new alert. Requires 'alert'.\n  IMPORTANT: Always ask the user for priority (P1-P5) - never pick one yourself.\n  Returns: { message, alertId }\n\n- get: Get alert by ID. Requires 'id'.\n  Returns: { message, alert }\n\n- list: List alerts. Optional 'nameFilter' for case-insensitive name matching.\n  Returns: { message, alerts }\n\n- update: Update existing alert. Requires 'alert' (must include 'id' field).\n  IMPORTANT: First use get/list to fetch the existing alert, modify it, then pass the complete alert here.\n  Update is a full replace: omitted fields, including caseSettings, are reset.\n  Returns: { message, alertId }\n\n- delete: Delete alert by ID. Requires 'id'.\n  IMPORTANT: If you only have the alert name, use list with nameFilter first to find the ID.\n  Returns: { message }\n\n- generate_openapi: Generate OpenAPI JSON payload. Requires 'alert'.\n  IMPORTANT: For existing alerts, use get/list first to fetch it.\n  Returns: { message, openAPIDefinition }\n\n- generate_kubernetes: Generate K8s YAML for Coralogix Operator. Requires 'alert'.\n  IMPORTANT: For existing alerts, use get/list first to fetch it.\n  Returns: { message, k8sYAML }\n\n- generate_terraform: Generate Terraform HCL for Coralogix Provider. Requires 'alert'.\n  IMPORTANT: For existing alerts, use get/list first to fetch it.\n  Returns: { message, tfHCL }\n\nRequired fields by action:\n- action: Always required\n- id: Required for get, delete\n- alert: Required for create, update, generate_openapi, generate_kubernetes, generate_terraform\n- nameFilter: Optional for list",
       "annotations": {
         "readOnlyHint": false,
         "destructiveHint": true,
@@ -507,7 +479,7 @@
       "title": "Manage and inspect cases",
       "domain": "Alerts & Cases",
       "status": "current",
-      "description": "Manage or inspect one or more cases.\n\nLifecycle actions mutate a case. First retrieve the live case with ``get_alerts_object`` and confirm the intended action and ID with the user.\n\nArgs:\n    action: ``update``, ``comment``, ``assign``, ``unassign``, ``acknowledge``, ``unacknowledge``, ``resolve``, ``close``, ``set_priority``, ``clear_priority``, ``events``, ``get_event``, or ``notifications``.\n    case_ids: Required for every action except ``get_event``. One or more case UUIDs or readable IDs such as ``CASE-123``. Lifecycle and ``events`` actions use the first ID; ``notifications`` uses every ID.\n    event_id: Required for ``get_event``. Case event UUID.\n    title: Optional replacement title for ``update``.\n    resolution_reason: Optional resolution reason for ``update``.\n    text: Required comment text for ``comment``.\n    user_id: Required Coralogix user ID for ``assign``.\n    reason: Required resolution reason for ``resolve``.\n    priority: Required priority for ``set_priority``: ``P1`` through ``P5``.\n\nReturns:\n    JSON string containing the Cases API response. ``events`` returns the case event timeline; ``get_event`` returns one event; ``notifications`` returns notification delivery records.",
+      "description": "Manage or inspect one or more cases.\n\nLifecycle actions mutate a case. First retrieve the live case with ``get_alerts_object`` (by UUID or readable ID), then confirm the intended action and ID with the user before acting. To find a case you do not have an ID for, query the ``system/labs.cases.state_updates`` dataset with ``query_dataprime`` — see the ``case-analytics`` skill. ``linked_cases`` is a read (a case's parent or children), not a mutation, and needs no confirmation.\n\n``acknowledge`` and ``unacknowledge`` are available here: the caller is a human's own agent, and an explicit request to acknowledge their own case is direct intent, not an inference. Call ``acknowledge`` only after the user has confirmed they (or their team) are taking ownership — never infer acknowledgment from an investigation result. If ownership is uncertain, prefer leaving the case as-is over guessing.\n\nArgs:\n    action: ``create``, ``update``, ``comment``, ``assign``, ``unassign``, ``acknowledge``, ``unacknowledge``, ``resolve``, ``close``, ``set_priority``, ``clear_priority``, ``mute``, ``unmute``, ``set_parent``, ``unlink``, ``events``, ``linked_cases``, ``get_event``, or ``notifications``.\n    title: Required for ``create``; optional replacement title for ``update``.\n    dedup_key: Required for ``create``. A stable string identifying the *problem*, not the occurrence — never a timestamp or random value. One unresolved case may exist per key; a duplicate is rejected and a recurrence is chained onto the previous resolved case.\n    labels: Optional for ``create``. Affected entities as a list of ``{key, value}`` pairs, one value per key; routers match on ``team``, ``environment`` and ``service``. Labels cannot be changed after the case is created.\n    entity_link_urls: Optional for ``create``. URLs to the entity the case is about.\n    source_metadata: Optional for ``create``. A JSON **object** encoded as a string, recording where the case came from. Write-once — there is no API to change it later.\n    case_ids: Required for every action except ``create`` and ``get_event``. One or more case UUIDs or readable IDs such as ``CASE-123``. Lifecycle and ``events`` actions use the first ID; ``notifications`` uses every ID.\n    event_id: Required for ``get_event``. Case event UUID.\n    resolution_reason: Optional resolution reason for ``update``.\n    text: Required comment text for ``comment``; the description for ``create``.\n    user_id: Required Coralogix user ID for ``assign``.\n    reason: Required resolution reason for ``resolve``.\n    priority: Required priority for ``set_priority``: ``P1`` through ``P5``.\n    parent_case_id: Required for ``set_parent``. UUID of the case to set as the parent of ``case_ids[0]``; a readable ID is not accepted here. Only parent-child links exist.\n    mute_child: Required for ``set_parent``. No default — choose ``True`` to mute the child (``case_ids[0]``) so the parent is the single notifying case, or ``False`` to leave both cases notifying. State the choice in the confirmation, especially when the child is currently unmuted and may be actively paging someone.\n    linked_case_id: Required for ``unlink``. UUID of the linked case to detach; a readable ID is not accepted here.\n\nReturns:\n    JSON string containing the Cases API response. ``events`` returns the case event timeline; ``get_event`` returns one event; ``notifications`` returns notification delivery records.",
       "annotations": {
         "readOnlyHint": false,
         "destructiveHint": true,
@@ -829,7 +801,7 @@
       "title": "List Olly Chats",
       "domain": "Olly Agent",
       "status": "current",
-      "description": "List the user's Olly chat sessions.\n\nUse this to find previous conversations the user had with Olly. Each chat has an ID that can be used to continue the conversation or retrieve its artifacts.\n\nReturns:\n    JSON array of chats with ``id``, ``title``, ``created_at``, and ``type``.",
+      "description": "List the user's Olly chat sessions.\n\nUse this to find previous conversations the user had with Olly. Each chat has an ID that can be used to continue the conversation or retrieve its artifacts.\n\nReturns:\n    JSON ``{\"items\": [...]}`` where each chat has ``id``, ``title``, ``created_at``, and ``type``.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -857,7 +829,21 @@
       "title": "Query DataPrime (logs, spans, or datasets)",
       "domain": "Logs, Spans & Datasets",
       "status": "current",
-      "description": "Execute a DataPrime query against Coralogix logs, spans, or named datasets.\n\nArgs:\n    query: DataPrime query to execute. Must start with a source clause, e.g. `source logs`, `source spans`, `source rum.events` for RUM / Real User Monitoring (load the `coralogix-rum` skill), or `source system/labs.cases.state_updates` for fleet case analytics (load the `case-analytics` skill).\n    start_date: Range start, ISO 8601 UTC (`YYYY-MM-DDTHH:MM:SSZ`). Default: 15 minutes before `end_date`, or 15 minutes before now if `end_date` is omitted.\n    end_date: Range end, ISO 8601 UTC. Default: 15 minutes after `start_date`, or now if `start_date` is omitted.\n    limit: Maximum number of rows to return.\n\nReturns:\n    JSON string with ``records`` and ``dataprime_warnings``.",
+      "description": "Execute a DataPrime query against Coralogix logs, spans, or named datasets.\n\nWide scans (multi-day archive ranges, free-text or regex filters, high-cardinality groupby) can take up to 5 minutes. If your client can run tool calls in the background or hand them to a sub-agent, do that for such queries and continue with other work; otherwise narrow the time range or add selective filters first.\n\nArgs:\n    query: DataPrime query to execute. Must start with a source clause, e.g. `source logs`, `source spans`, `source rum.events` for RUM / Real User Monitoring (load the `coralogix-rum` skill), or `source system/labs.cases.state_updates` for fleet case analytics (load the `case-analytics` skill).\n    start_date: Range start, ISO 8601 UTC (`YYYY-MM-DDTHH:MM:SSZ`). Default: 15 minutes before `end_date`, or 15 minutes before now if `end_date` is omitted.\n    end_date: Range end, ISO 8601 UTC. Default: 15 minutes after `start_date`, or now if `start_date` is omitted.\n    limit: Maximum number of rows to return.\n\nReturns:\n    JSON string with ``records`` and ``dataprime_warnings``.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": null
+      },
+      "requiresHeader": null
+    },
+    {
+      "name": "query_profiling",
+      "title": "Query Continuous Profiling",
+      "domain": "Continuous Profiling",
+      "status": "current",
+      "description": "Query continuous-profiling data (CPU, wall-clock, memory allocations and heap) for the user's services: which services consume the most CPU or memory, when usage spiked and which pod or version drove it, and which code paths and functions the CPU time or memory goes to. Read-only.\n\nActions:\n- ``list_services``: one page of the services that have profiling data for one category, ranked by the server from highest to lowest usage.\n- ``service_metadata``: a service's language and which profile types have data in the window. Optional before ``metrics`` or ``flame_graph``: when the requested profile type has no data, those actions fail with the profile types that do.\n- ``filters``: the labels a service's data can be filtered or split by (e.g. pod, service version, environment), with their values. Use them in ``filters``, or pass a key as ``sum_by`` to ``metrics``.\n- ``metrics``: one profile type's usage over time for a service, optionally split by pod or a label. Series are ranked by their total over the window and trimmed to ``limit``.\n- ``flame_graph``: a decoded call tree plus the top functions by self value summed across all call paths. To compare two windows (e.g. before and after a spike or a deploy), call it once per window and compare ``top_functions`` and the tree percentages.\n\nParameters an action does not use are ignored.\n\nArgs:\n    action: ``list_services``, ``service_metadata``, ``filters``, ``metrics``, or ``flame_graph``.\n    start_date: Required for every action. Window start, ISO 8601 UTC (``YYYY-MM-DDTHH:MM:SSZ``).\n    end_date: Required for every action. Window end, ISO 8601 UTC (must be after ``start_date``).\n    category: Required for ``list_services``. \"cpu\" or \"memory\".\n    service_name: Required for ``service_metadata``, ``filters``, ``metrics`` and ``flame_graph``. The service name, as returned by ``list_services``.\n    profile_type: Required for ``filters``, ``metrics`` and ``flame_graph``. One of CPU, WALL, MEMORY_ALLOCATION_BYTES, MEMORY_ALLOCATION_OBJECTS, MEMORY_HEAP_BYTES, MEMORY_HEAP_OBJECTS.\n    environments: Optional for ``list_services``. Only services in these deployment environments (``deployment.environment.name`` values).\n    name_contains: Optional for ``list_services``. Only services whose name contains this text (case-insensitive), searched among the top 1000 services.\n    filters: Optional for ``filters``, ``metrics`` and ``flame_graph``. List of ``{key, values, predicate}`` from the ``filters`` action; ``predicate`` is \"EQUAL\" (default), \"NOT_EQUAL\", \"EXISTS\" or \"NOT_EXISTS\" (the last two take no values). Filters combine with AND, values with OR. For the ``filters`` action they narrow the returned values.\n    limit: Optional for ``list_services`` (max services in this page; default 20, 1-100) and ``metrics`` (max series to return; default 10).\n    offset: Optional for ``list_services``. Services to skip before this page (default 0). To page, call again with ``offset += limit`` while ``has_more`` is true.\n    include_time_series: Optional for ``list_services``. Include each service's usage series (default false; adds a lot of output).\n    max_values_per_key: Optional for ``filters``. Max values returned per key (default 50).\n    sum_by: Optional for ``metrics``. \"service\" (default, one series), \"pod\", or a label key from the ``filters`` action.\n    max_buckets: Optional for ``metrics``. Number of time buckets across the window (default 60, max 200).\n    min_node_ratio: Optional for ``flame_graph``. Drop subtrees whose total is below this fraction of the whole graph (default 0.01 = 1%; minimum 0.001, the server's own pruning). Raise it when the output is too large.\n    max_depth: Optional for ``flame_graph``. Drop frames deeper than this many levels below the root (default 20). Raise it to see deeper frames.\n    top_functions: Optional for ``flame_graph``. Number of entries in ``top_functions`` (default 20). Computed over the full graph, before ``min_node_ratio``/``max_depth`` trimming.\n\nReturns:\n    ``list_services``: JSON with ``category``, ``ranked_by`` (the fixed ranking key: ``total_cpu_seconds + total_wall_seconds`` for cpu, ``total_memory_allocations_bytes + total_heap_bytes`` for memory, highest first), ``limit``, ``offset``, ``has_more`` (true when more services may follow), with ``name_contains``: ``searched_services`` and ``search_complete`` (false when more than 1000 services exist, so matches may be missing), and ``services``: ``{service_name, language, last_active (unix seconds), <category totals>}``, plus the series when requested. Pass ``service_name`` verbatim to the other actions.\n    ``service_metadata``: JSON with ``service_name``, ``language``, ``profile_types`` (``[{profile_type, has_data}]``) and ``profile_types_with_data``.\n    ``filters``: JSON with ``filters``: ``[{key, values, total_values, truncated}]``.\n    ``metrics``: JSON with ``unit`` (\"seconds\" for CPU/WALL, \"bytes\" or \"objects\" for memory types), ``sum_by``, ``total_series`` (count before trimming) and ``series``: ``[{group_by_value, total, points: [{timestamp (unix seconds), avg_value (per second; cores for CPU/WALL), total_value (per bucket)}]}]``.\n    ``flame_graph``: compact JSON with ``warnings`` (query limits hit; the graph may be partial), ``total_value``, ``max_depth``, ``tree_depth``, ``tree_truncated`` (true when the tree was cut to fewer levels than ``max_depth`` to fit the output size cap; raise ``min_node_ratio`` or filter to see deeper), ``omitted_subtrees``, ``top_functions`` (``[{function, file, self, self_percent}]``) and ``tree`` (nodes ``{function, file, line, package, frame_type, classification, self, total, self_percent, total_percent, children}``; ``classification`` tells user code from standard library, external library, native and kernel frames). Values are in the profile type's sample units; reason with the percentages.\n    ``metrics`` and ``flame_graph`` fail when the window has no data for the profile type (the error lists the profile types with data), and ``flame_graph`` fails when the service never reported profiles.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
