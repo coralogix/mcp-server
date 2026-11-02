@@ -1,17 +1,12 @@
-# Security
+# Security Policy
 
-## Reporting a vulnerability
+## Reporting a Vulnerability
+
+Please report (suspected) security vulnerabilities to **security@coralogix.com**. If the issue is confirmed, we will release a patch as soon as possible depending on complexity.
 
 **Do not open a public GitHub issue for a security vulnerability.**
 
-Report vulnerabilities in the Coralogix MCP server, or in anything this repository documents, through Coralogix's security disclosure process.
-
-<!-- TODO(coralogix): confirm the official disclosure address with the security team and replace this block before publishing. -->
-
-- **Email** — `TBD@coralogix.com` *(to be confirmed by the Coralogix security team)*
-- **Or** — your existing Coralogix support channel, which will route the report to security.
-
-Please include the affected component, steps to reproduce, and the impact you believe it has. Coralogix will acknowledge and keep you informed of remediation.
+This covers the Coralogix MCP server and anything this repository documents. Please include the affected component, steps to reproduce, and the impact you believe it has.
 
 ## Scope
 

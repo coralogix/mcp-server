@@ -39,6 +39,10 @@ When reporting a documentation bug, include the page, what it says, and what act
 4. Add a `CHANGELOG.md` entry under "Unreleased" if the change is user-visible.
 5. Open a pull request describing what changed and how you verified it.
 
+## Contributor License Agreement
+
+Before your first pull request can be merged, you must sign the [Contributor License Agreement](CLA.md). The CLA Assistant bot comments on your pull request with a link to sign it. You sign once; it covers all your later contributions.
+
 ## Generated files
 
 **Do not hand-edit these.** They are derived from the server source and will be overwritten:
