@@ -1,6 +1,8 @@
 # Contributing
 
-Thanks for helping improve the Coralogix MCP documentation.
+This repository is maintained by Coralogix. **We do not accept pull requests from outside contributors.** Pull requests opened by people outside Coralogix will be closed.
+
+You can still help: if you find a problem, open an issue.
 
 ## What lives here
 
@@ -10,38 +12,25 @@ This repository holds the **public documentation, connection examples, and regis
 - The tool and skill catalogs (`docs/tools.md`, `docs/skills.md`)
 - Machine-readable manifests (`resources/`, `server.json`, `llms.txt`)
 
-## What does not live here
-
-**The server implementation.** It is developed and deployed privately by Coralogix. Pull requests adding server source code, tool implementations, or deployment configuration will be closed.
-
-That boundary is deliberate: the server is a hosted service backed by Coralogix's internal APIs, so a public implementation could not be run by anyone outside Coralogix anyway. What is useful in public is everything needed to *connect to* and *reason about* the server — which is what this repo is.
-
-## Good contributions
-
-- A client configuration that works and isn't documented yet
-- A correction where the docs disagree with the deployed server
-- A clearer explanation, a missing troubleshooting entry, a broken link
-- A worked prompt example for a real workflow
+**The server implementation does not live here.** It is developed and deployed privately by Coralogix.
 
 ## Reporting issues
 
-**Documentation problems** — wrong instructions, stale tool list, broken example, incorrect registry metadata → open a GitHub issue here.
+**Documentation problems** — wrong instructions, stale tool list, broken example, incorrect registry metadata, a client configuration that is missing → open a GitHub issue here.
 
 **Server or account problems** — a tool erroring, missing data, permissions, quota → contact Coralogix support through your usual channel. Issues opened here cannot reach your account.
 
+**Security vulnerabilities** — do not open an issue. See [SECURITY.md](SECURITY.md).
+
 When reporting a documentation bug, include the page, what it says, and what actually happens.
 
-## Making changes
+## For Coralogix maintainers
 
-1. Fork and branch.
+1. Branch from `master`.
 2. Make the change. Keep the existing tone: direct, second person, no marketing language.
 3. Verify every command and config you touch actually works, and every link resolves.
 4. Add a `CHANGELOG.md` entry under "Unreleased" if the change is user-visible.
 5. Open a pull request describing what changed and how you verified it.
-
-## Contributor License Agreement
-
-Before your first pull request can be merged, you must sign the [Contributor License Agreement](CLA.md). The CLA Assistant bot comments on your pull request with a link to sign it. You sign once; it covers all your later contributions.
 
 ## Generated files
 
