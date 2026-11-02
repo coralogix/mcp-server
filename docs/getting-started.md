@@ -55,7 +55,7 @@ Ask your assistant to list what it can do, or check the tool list directly:
 ./examples/curl/list-tools.sh https://api.eu2.coralogix.com/mgmt/api/v1/mcp "$CORALOGIX_API_KEY"
 ```
 
-You should see 66 tools — the six Olly agent tools are withheld unless the request sets `x-allow-costly-use`. If you see none, or an authentication error, go to [Troubleshooting](troubleshooting.md).
+You should see 65 tools — the six Olly agent tools are withheld unless the request sets `x-allow-costly-use`. If you see none, or an authentication error, go to [Troubleshooting](troubleshooting.md).
 
 ## 4. Run a first query
 
@@ -82,4 +82,4 @@ It is rendered as the [Coralogix API reference](https://coralogix.com/docs/api-r
 - **Time ranges default narrow.** Query tools default to a 15-minute window. Ask for an explicit range when you want more.
 - **Most tools are read-only.** Dashboards, saved views and cases have `manage_*` tools that mutate state and are annotated `destructiveHint: true` — your client should ask before calling them. See the [tool catalog](tools.md).
 - **Olly is opt-in.** The Olly agent tools are hidden unless you send `x-allow-costly-use: true`. See [Headers and versioning](headers-and-versioning.md).
-- **Skills load on demand.** The server ships 18 [skills](skills.md) that teach the model DataPrime, PromQL and Coralogix investigation workflows. The model pulls them in as needed; you do not configure them.
+- **Skills load on demand.** The server ships 20 [skills](skills.md) that teach the model DataPrime, PromQL and Coralogix investigation workflows. The model pulls them in as needed; you do not configure them.

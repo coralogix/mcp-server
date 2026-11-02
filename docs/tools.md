@@ -2,7 +2,7 @@
 
 # Tool catalog
 
-The Coralogix MCP server exposes **72 current tools** across 20 capability domains, plus **12 deprecated tools** retained on the `v1` surface.
+The Coralogix MCP server exposes **71 current tools** across 21 capability domains, plus **12 deprecated tools** retained on the `v1` surface.
 
 6 of the current tools are the Olly agent tools, which a client sees only when the request sends `x-allow-costly-use: true` — see [Headers and versioning](headers-and-versioning.md).
 
@@ -50,6 +50,12 @@ Tools advertise [MCP tool annotations](https://modelcontextprotocol.io/docs/conc
 | `manage_cases` | Manage and inspect cases | no | yes | no |
 | `search_alert_definitions` | Search alert definitions | yes | no | no |
 
+### Continuous Profiling (1)
+
+| Tool | Title | Read-only | Destructive | Open world |
+|---|---|---|---|---|
+| `query_profiling` | Query Continuous Profiling | yes | no | no |
+
 ### Dashboards (5)
 
 | Tool | Title | Read-only | Destructive | Open world |
@@ -93,14 +99,12 @@ Tools advertise [MCP tool annotations](https://modelcontextprotocol.io/docs/conc
 |---|---|---|---|---|
 | `search_for_fields` | Search log/span fields by description and/or example value | yes | no | no |
 
-### Infrastructure (5)
+### Infrastructure (3)
 
 | Tool | Title | Read-only | Destructive | Open world |
 |---|---|---|---|---|
-| `get_infrastructure_resource_health_history` | Get Infrastructure Resource Health History | yes | no | no |
-| `get_infrastructure_resource_raw_data` | Get Infrastructure Resource Raw Data | yes | no | no |
-| `list_infrastructure_filters` | List Infrastructure Filters | yes | no | no |
-| `list_infrastructure_resource_types` | List Infrastructure Resource Types | yes | no | no |
+| `describe_infrastructure` | Describe Infrastructure | yes | no | no |
+| `get_infrastructure_resource_details` | Get Infrastructure Resource Details | yes | no | no |
 | `list_infrastructure_resources` | List Infrastructure Resources | yes | no | no |
 
 ### Ingestion & Enrichment (3)

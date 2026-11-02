@@ -1,6 +1,6 @@
 # Coralogix MCP Server
 
-> Hosted Model Context Protocol server for Coralogix observability data. 57 tools and 18 skills covering logs, spans, metrics, RUM, alerts, cases, dashboards, saved views, infrastructure, service catalog, data usage and AI Center. Remote only — streamable HTTP at https://api.<region>.coralogix.com/mgmt/api/v1/mcp, authenticated with OAuth 2.1 or a Coralogix API key. This repository holds documentation, connection examples and registry metadata; the server implementation is not public.
+> Hosted Model Context Protocol server for Coralogix observability data. 71 tools and 20 skills covering logs, spans, metrics, RUM, alerts, cases, dashboards, saved views, infrastructure, continuous profiling, service catalog, data usage and AI Center. Remote only — streamable HTTP at https://api.<region>.coralogix.com/mgmt/api/v1/mcp, authenticated with OAuth 2.1 or a Coralogix API key. This repository holds documentation, connection examples and registry metadata; the server implementation is not public.
 
 ## Start here
 
@@ -11,7 +11,7 @@
 ## Reference
 
 - [Tool catalog](docs/tools.md): All 69 tools — 57 current and 12 deprecated — grouped by domain, with read-only, destructive and open-world annotations.
-- [Skills](docs/skills.md): The 18 skills served as MCP resources, with the verbatim descriptions the model routes on.
+- [Skills](docs/skills.md): The 20 skills served as MCP resources, with the verbatim descriptions the model routes on.
 - [Authentication](docs/authentication.md): OAuth 2.1 and API key flows, permission inheritance, and team scoping.
 - [Headers and versioning](docs/headers-and-versioning.md): The mcp-version and x-allow-costly-use headers, the v1/v2 tool surfaces, and Olly opt-in.
 - [Troubleshooting](docs/troubleshooting.md): Empty tool lists, authentication failures, empty query results, and connection problems.
