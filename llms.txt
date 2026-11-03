@@ -10,7 +10,7 @@
 
 ## Reference
 
-- [Tool catalog](docs/tools.md): All 69 tools — 57 current and 12 deprecated — grouped by domain, with read-only, destructive and open-world annotations.
+- [Tool catalog](docs/tools.md): All 71 tools grouped by domain, with read-only, destructive and open-world annotations.
 - [Skills](docs/skills.md): The 20 skills served as MCP resources, with the verbatim descriptions the model routes on.
 - [Authentication](docs/authentication.md): OAuth 2.1 and API key flows, permission inheritance, and team scoping.
 - [Headers and versioning](docs/headers-and-versioning.md): The mcp-version and x-allow-costly-use headers, the v1/v2 tool surfaces, and Olly opt-in.
