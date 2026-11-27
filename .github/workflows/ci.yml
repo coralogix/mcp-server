@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
 
       - name: Check JSON files parse
         run: |
@@ -60,7 +60,7 @@ jobs:
       # Hosted MCP endpoints need credentials and answer 405 to a plain GET.
       # Leave them out so the link check stays on documentation URLs.
       - name: Check Markdown links
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
           fail: true
           args: >-
